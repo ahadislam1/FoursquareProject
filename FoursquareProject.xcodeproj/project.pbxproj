@@ -24,6 +24,7 @@
 		0B9D743524006C680027C2F2 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9D743424006C680027C2F2 /* SearchView.swift */; };
 		0B9D743824006C950027C2F2 /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9D743724006C950027C2F2 /* Venue.swift */; };
 		0B9D743C24006CE90027C2F2 /* ImageKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0B9D743B24006CE90027C2F2 /* ImageKit */; };
+		0B9D743F2400767B0027C2F2 /* GenericCoderAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9D743E2400767B0027C2F2 /* GenericCoderAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		0B03594024006BC000C2EA23 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		0B9D743424006C680027C2F2 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		0B9D743724006C950027C2F2 /* Venue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
+		0B9D743E2400767B0027C2F2 /* GenericCoderAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericCoderAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			children = (
 				0B03591C2400671F00C2EA23 /* Info.plist */,
 				0B0359172400671F00C2EA23 /* Assets.xcassets */,
+				0B9D74402400768B0027C2F2 /* Services */,
 				0B03593B2400697D00C2EA23 /* Controllers */,
 				0B9D743924006C9D0027C2F2 /* Models */,
 				0B035932240067C900C2EA23 /* Secrets */,
@@ -166,6 +169,14 @@
 				0B0359192400671F00C2EA23 /* LaunchScreen.storyboard */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0B9D74402400768B0027C2F2 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				0B9D743E2400767B0027C2F2 /* GenericCoderAPI.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -284,6 +295,7 @@
 				0B035931240067C100C2EA23 /* Secret.swift in Sources */,
 				0B03590F2400671E00C2EA23 /* AppDelegate.swift in Sources */,
 				0B0359362400690C00C2EA23 /* FavoritesViewController.swift in Sources */,
+				0B9D743F2400767B0027C2F2 /* GenericCoderAPI.swift in Sources */,
 				0B0359112400671E00C2EA23 /* SceneDelegate.swift in Sources */,
 				0B9D743824006C950027C2F2 /* Venue.swift in Sources */,
 				0B0359382400694600C2EA23 /* DetailViewController.swift in Sources */,

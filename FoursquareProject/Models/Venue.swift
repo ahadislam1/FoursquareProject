@@ -8,6 +8,127 @@
 
 import Foundation
 
-struct Venue {
-    
+// MARK: - VenueModel
+struct VenueModel: Codable {
+    let response: VenueWrapper
+
+    enum CodingKeys: String, CodingKey {
+        case response = "response"
+    }
+}
+
+
+// MARK: - VenueWrapper
+struct VenueWrapper: Codable {
+    let venues: [Venue]
+    let confident: Bool
+
+    enum CodingKeys: String, CodingKey {
+        case venues = "venues"
+        case confident = "confident"
+    }
+}
+
+// MARK: - Venue
+struct Venue: Codable {
+    let id: String
+    let name: String
+    let location: Location
+    let categories: [Category]
+    let referralID: String
+    let hasPerk: Bool
+    let venuePage: VenuePage?
+
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case name = "name"
+        case location = "location"
+        case categories = "categories"
+        case referralID = "referralId"
+        case hasPerk = "hasPerk"
+        case venuePage = "venuePage"
+    }
+}
+
+// MARK: - Category
+struct Category: Codable {
+    let id: String
+    let name: String
+    let pluralName: String
+    let shortName: String
+    let icon: Icon
+    let primary: Bool
+
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case name = "name"
+        case pluralName = "pluralName"
+        case shortName = "shortName"
+        case icon = "icon"
+        case primary = "primary"
+    }
+}
+
+// MARK: - Icon
+struct Icon: Codable {
+    let iconPrefix: String
+    let suffix: String
+
+    enum CodingKeys: String, CodingKey {
+        case iconPrefix = "prefix"
+        case suffix = "suffix"
+    }
+}
+
+// MARK: - Location
+struct Location: Codable {
+    let address: String?
+    let crossStreet: String?
+    let lat: Double
+    let lng: Double
+    let labeledLatLngs: [LabeledLatLng]
+    let distance: Int
+    let postalCode: String?
+    let cc: String
+    let city: String?
+    let state: String
+    let country: String
+    let formattedAddress: [String]
+
+    enum CodingKeys: String, CodingKey {
+        case address = "address"
+        case crossStreet = "crossStreet"
+        case lat = "lat"
+        case lng = "lng"
+        case labeledLatLngs = "labeledLatLngs"
+        case distance = "distance"
+        case postalCode = "postalCode"
+        case cc = "cc"
+        case city = "city"
+        case state = "state"
+        case country = "country"
+        case formattedAddress = "formattedAddress"
+    }
+}
+
+// MARK: - LabeledLatLng
+struct LabeledLatLng: Codable {
+    let label: String
+    let lat: Double
+    let lng: Double
+
+    enum CodingKeys: String, CodingKey {
+        case label = "label"
+        case lat = "lat"
+        case lng = "lng"
+    }
+}
+
+// MARK: - VenuePage
+struct VenuePage: Codable {
+    let id: String
+
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+    }
 }
