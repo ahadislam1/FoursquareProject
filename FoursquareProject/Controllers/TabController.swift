@@ -9,10 +9,22 @@
 import UIKit
 
 class TabController: UITabBarController {
+    
+    private lazy var searchVC: SearchViewController = {
+        let vc = SearchViewController()
+        vc.tabBarItem = UITabBarItem(title: "Search", image: UIImage(systemName: "magnifyingglass"), tag: 0)
+        return vc
+    }()
+    
+    private lazy var favoritesVC: FavoritesViewController = {
+        let vc = FavoritesViewController()
+        vc.tabBarItem = UITabBarItem(title: "Favorites", image: UIImage(systemName: "book"), tag: 1)
+        return vc
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        viewControllers = [searchVC, favoritesVC]
         // Do any additional setup after loading the view.
     }
     
