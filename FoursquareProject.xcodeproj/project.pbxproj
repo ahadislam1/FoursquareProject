@@ -14,6 +14,7 @@
 		0B0359182400671F00C2EA23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B0359172400671F00C2EA23 /* Assets.xcassets */; };
 		0B03591B2400671F00C2EA23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B0359192400671F00C2EA23 /* LaunchScreen.storyboard */; };
 		0B0359262400672000C2EA23 /* FoursquareProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0359252400672000C2EA23 /* FoursquareProjectTests.swift */; };
+		0B035931240067C100C2EA23 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B035930240067C100C2EA23 /* Secret.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		0B0359212400672000C2EA23 /* FoursquareProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoursquareProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B0359252400672000C2EA23 /* FoursquareProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoursquareProjectTests.swift; sourceTree = "<group>"; };
 		0B0359272400672000C2EA23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0B035930240067C100C2EA23 /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				0B03590E2400671E00C2EA23 /* AppDelegate.swift */,
+				0B035932240067C900C2EA23 /* Secrets */,
 				0B0359102400671E00C2EA23 /* SceneDelegate.swift */,
 				0B0359122400671E00C2EA23 /* ViewController.swift */,
 				0B0359142400671E00C2EA23 /* Main.storyboard */,
@@ -97,6 +100,14 @@
 				0B0359272400672000C2EA23 /* Info.plist */,
 			);
 			path = FoursquareProjectTests;
+			sourceTree = "<group>";
+		};
+		0B035932240067C900C2EA23 /* Secrets */ = {
+			isa = PBXGroup;
+			children = (
+				0B035930240067C100C2EA23 /* Secret.swift */,
+			);
+			path = Secrets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,6 +212,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B0359132400671E00C2EA23 /* ViewController.swift in Sources */,
+				0B035931240067C100C2EA23 /* Secret.swift in Sources */,
 				0B03590F2400671E00C2EA23 /* AppDelegate.swift in Sources */,
 				0B0359112400671E00C2EA23 /* SceneDelegate.swift in Sources */,
 			);
