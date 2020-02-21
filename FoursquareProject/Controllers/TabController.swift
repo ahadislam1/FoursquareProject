@@ -7,20 +7,24 @@
 //
 
 import UIKit
+import DataPersistence
 
 class TabController: UITabBarController {
     
+    private let dataPersistence = DataPersistence<Venue>(filename: "favorites.plist")
+    
     private lazy var searchVC: SearchViewController = {
-        let vc = SearchViewController()
+        let vc = SearchViewController(dataPersistence)
         vc.tabBarItem = UITabBarItem(title: "Search", image: UIImage(systemName: "magnifyingglass"), tag: 0)
         return vc
     }()
     
     private lazy var favoritesVC: FavoritesViewController = {
-        let vc = FavoritesViewController()
+        let vc = FavoritesViewController(dataPersistence)
         vc.tabBarItem = UITabBarItem(title: "Favorites", image: UIImage(systemName: "book"), tag: 1)
         return vc
     }()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()

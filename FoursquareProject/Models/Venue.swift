@@ -30,7 +30,7 @@ struct VenueWrapper: Codable {
 }
 
 // MARK: - Venue
-struct Venue: Codable {
+struct Venue: Codable, Equatable {
     let id: String
     let name: String
     let location: Location
@@ -51,7 +51,7 @@ struct Venue: Codable {
 }
 
 // MARK: - Category
-struct Category: Codable {
+struct Category: Codable, Equatable {
     let id: String
     let name: String
     let pluralName: String
@@ -70,7 +70,7 @@ struct Category: Codable {
 }
 
 // MARK: - Icon
-struct Icon: Codable {
+struct Icon: Codable, Equatable {
     let iconPrefix: String
     let suffix: String
 
@@ -81,7 +81,7 @@ struct Icon: Codable {
 }
 
 // MARK: - Location
-struct Location: Codable {
+struct Location: Codable, Equatable {
     let address: String?
     let crossStreet: String?
     let lat: Double
@@ -112,7 +112,7 @@ struct Location: Codable {
 }
 
 // MARK: - LabeledLatLng
-struct LabeledLatLng: Codable {
+struct LabeledLatLng: Codable, Equatable {
     let label: String
     let lat: Double
     let lng: Double
@@ -125,7 +125,7 @@ struct LabeledLatLng: Codable {
 }
 
 // MARK: - VenuePage
-struct VenuePage: Codable {
+struct VenuePage: Codable, Equatable {
     let id: String
 
     enum CodingKeys: String, CodingKey {
