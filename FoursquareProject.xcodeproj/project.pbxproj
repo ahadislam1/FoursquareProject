@@ -99,15 +99,13 @@
 		0B03590D2400671E00C2EA23 /* FoursquareProject */ = {
 			isa = PBXGroup;
 			children = (
-				0B03590E2400671E00C2EA23 /* AppDelegate.swift */,
-				0B035932240067C900C2EA23 /* Secrets */,
-				0B0359102400671E00C2EA23 /* SceneDelegate.swift */,
-				0B9D743924006C9D0027C2F2 /* Models */,
-				0B9D743624006C740027C2F2 /* Views */,
-				0B03593B2400697D00C2EA23 /* Controllers */,
-				0B0359172400671F00C2EA23 /* Assets.xcassets */,
-				0B0359192400671F00C2EA23 /* LaunchScreen.storyboard */,
 				0B03591C2400671F00C2EA23 /* Info.plist */,
+				0B0359172400671F00C2EA23 /* Assets.xcassets */,
+				0B03593B2400697D00C2EA23 /* Controllers */,
+				0B9D743924006C9D0027C2F2 /* Models */,
+				0B035932240067C900C2EA23 /* Secrets */,
+				0B9D743D2400701A0027C2F2 /* Supporting Files */,
+				0B9D743624006C740027C2F2 /* Views */,
 			);
 			path = FoursquareProject;
 			sourceTree = "<group>";
@@ -158,6 +156,16 @@
 				0B9D743724006C950027C2F2 /* Venue.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		0B9D743D2400701A0027C2F2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0B03590E2400671E00C2EA23 /* AppDelegate.swift */,
+				0B0359102400671E00C2EA23 /* SceneDelegate.swift */,
+				0B0359192400671F00C2EA23 /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
