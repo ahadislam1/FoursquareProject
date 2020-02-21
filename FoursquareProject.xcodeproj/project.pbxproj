@@ -3,13 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		0B03590F2400671E00C2EA23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B03590E2400671E00C2EA23 /* AppDelegate.swift */; };
 		0B0359112400671E00C2EA23 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0359102400671E00C2EA23 /* SceneDelegate.swift */; };
-		0B0359132400671E00C2EA23 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0359122400671E00C2EA23 /* ViewController.swift */; };
+		0B0359132400671E00C2EA23 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0359122400671E00C2EA23 /* SearchViewController.swift */; };
 		0B0359162400671E00C2EA23 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B0359142400671E00C2EA23 /* Main.storyboard */; };
 		0B0359182400671F00C2EA23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B0359172400671F00C2EA23 /* Assets.xcassets */; };
 		0B03591B2400671F00C2EA23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B0359192400671F00C2EA23 /* LaunchScreen.storyboard */; };
@@ -22,6 +22,9 @@
 		0B03593D24006BA900C2EA23 /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B03593C24006BA900C2EA23 /* CreateView.swift */; };
 		0B03593F24006BAF00C2EA23 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B03593E24006BAF00C2EA23 /* DetailView.swift */; };
 		0B03594124006BC000C2EA23 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B03594024006BC000C2EA23 /* FavoritesView.swift */; };
+		0B9D743524006C680027C2F2 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9D743424006C680027C2F2 /* SearchView.swift */; };
+		0B9D743824006C950027C2F2 /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9D743724006C950027C2F2 /* Venue.swift */; };
+		0B9D743C24006CE90027C2F2 /* ImageKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0B9D743B24006CE90027C2F2 /* ImageKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +41,7 @@
 		0B03590B2400671E00C2EA23 /* FoursquareProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoursquareProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B03590E2400671E00C2EA23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0B0359102400671E00C2EA23 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0B0359122400671E00C2EA23 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0B0359122400671E00C2EA23 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		0B0359152400671E00C2EA23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0B0359172400671F00C2EA23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0B03591A2400671F00C2EA23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -54,6 +57,8 @@
 		0B03593C24006BA900C2EA23 /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
 		0B03593E24006BAF00C2EA23 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		0B03594024006BC000C2EA23 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
+		0B9D743424006C680027C2F2 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		0B9D743724006C950027C2F2 /* Venue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B9D743C24006CE90027C2F2 /* ImageKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,9 +104,8 @@
 				0B03590E2400671E00C2EA23 /* AppDelegate.swift */,
 				0B035932240067C900C2EA23 /* Secrets */,
 				0B0359102400671E00C2EA23 /* SceneDelegate.swift */,
-				0B03593C24006BA900C2EA23 /* CreateView.swift */,
-				0B03593E24006BAF00C2EA23 /* DetailView.swift */,
-				0B03594024006BC000C2EA23 /* FavoritesView.swift */,
+				0B9D743924006C9D0027C2F2 /* Models */,
+				0B9D743624006C740027C2F2 /* Views */,
 				0B03593B2400697D00C2EA23 /* Controllers */,
 				0B0359142400671E00C2EA23 /* Main.storyboard */,
 				0B0359172400671F00C2EA23 /* Assets.xcassets */,
@@ -133,10 +138,29 @@
 				0B0359392400697900C2EA23 /* CreateViewController.swift */,
 				0B0359372400694600C2EA23 /* DetailViewController.swift */,
 				0B0359352400690C00C2EA23 /* FavoritesViewController.swift */,
-				0B0359122400671E00C2EA23 /* ViewController.swift */,
+				0B0359122400671E00C2EA23 /* SearchViewController.swift */,
 				0B035933240068F800C2EA23 /* TabController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		0B9D743624006C740027C2F2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0B03593C24006BA900C2EA23 /* CreateView.swift */,
+				0B03593E24006BAF00C2EA23 /* DetailView.swift */,
+				0B03594024006BC000C2EA23 /* FavoritesView.swift */,
+				0B9D743424006C680027C2F2 /* SearchView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0B9D743924006C9D0027C2F2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0B9D743724006C950027C2F2 /* Venue.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,6 +179,9 @@
 			dependencies = (
 			);
 			name = FoursquareProject;
+			packageProductDependencies = (
+				0B9D743B24006CE90027C2F2 /* ImageKit */,
+			);
 			productName = FoursquareProject;
 			productReference = 0B03590B2400671E00C2EA23 /* FoursquareProject.app */;
 			productType = "com.apple.product-type.application";
@@ -205,6 +232,9 @@
 				Base,
 			);
 			mainGroup = 0B0359022400671E00C2EA23;
+			packageReferences = (
+				0B9D743A24006CE90027C2F2 /* XCRemoteSwiftPackageReference "ImageKit" */,
+			);
 			productRefGroup = 0B03590C2400671E00C2EA23 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -244,12 +274,14 @@
 				0B03593A2400697900C2EA23 /* CreateViewController.swift in Sources */,
 				0B03593D24006BA900C2EA23 /* CreateView.swift in Sources */,
 				0B035934240068F800C2EA23 /* TabController.swift in Sources */,
+				0B9D743524006C680027C2F2 /* SearchView.swift in Sources */,
 				0B03593F24006BAF00C2EA23 /* DetailView.swift in Sources */,
-				0B0359132400671E00C2EA23 /* ViewController.swift in Sources */,
+				0B0359132400671E00C2EA23 /* SearchViewController.swift in Sources */,
 				0B035931240067C100C2EA23 /* Secret.swift in Sources */,
 				0B03590F2400671E00C2EA23 /* AppDelegate.swift in Sources */,
 				0B0359362400690C00C2EA23 /* FavoritesViewController.swift in Sources */,
 				0B0359112400671E00C2EA23 /* SceneDelegate.swift in Sources */,
+				0B9D743824006C950027C2F2 /* Venue.swift in Sources */,
 				0B0359382400694600C2EA23 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -517,6 +549,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0B9D743A24006CE90027C2F2 /* XCRemoteSwiftPackageReference "ImageKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/alexpaul/ImageKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0B9D743B24006CE90027C2F2 /* ImageKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0B9D743A24006CE90027C2F2 /* XCRemoteSwiftPackageReference "ImageKit" */;
+			productName = ImageKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0B0359032400671E00C2EA23 /* Project object */;
 }
