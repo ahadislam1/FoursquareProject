@@ -13,7 +13,6 @@
 		0B0359182400671F00C2EA23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B0359172400671F00C2EA23 /* Assets.xcassets */; };
 		0B03591B2400671F00C2EA23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B0359192400671F00C2EA23 /* LaunchScreen.storyboard */; };
 		0B0359262400672000C2EA23 /* FoursquareProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0359252400672000C2EA23 /* FoursquareProjectTests.swift */; };
-		0B035931240067C100C2EA23 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B035930240067C100C2EA23 /* Secret.swift */; };
 		0B035934240068F800C2EA23 /* TabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B035933240068F800C2EA23 /* TabController.swift */; };
 		0B0359362400690C00C2EA23 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0359352400690C00C2EA23 /* FavoritesViewController.swift */; };
 		0B0359382400694600C2EA23 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0359372400694600C2EA23 /* DetailViewController.swift */; };
@@ -25,6 +24,8 @@
 		0B9D743824006C950027C2F2 /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9D743724006C950027C2F2 /* Venue.swift */; };
 		0B9D743C24006CE90027C2F2 /* ImageKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0B9D743B24006CE90027C2F2 /* ImageKit */; };
 		0B9D743F2400767B0027C2F2 /* GenericCoderAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9D743E2400767B0027C2F2 /* GenericCoderAPI.swift */; };
+		807D6E7624008C0A000D393C /* CoreLocationSessionswift in Sources */ = {isa = PBXBuildFile; fileRef = 807D6E7524008C0A000D393C /* CoreLocationSessionswift */; };
+		807D6E7824008C36000D393C /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807D6E7724008C36000D393C /* Secret.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +49,6 @@
 		0B0359212400672000C2EA23 /* FoursquareProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoursquareProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B0359252400672000C2EA23 /* FoursquareProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoursquareProjectTests.swift; sourceTree = "<group>"; };
 		0B0359272400672000C2EA23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0B035930240067C100C2EA23 /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
 		0B035933240068F800C2EA23 /* TabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabController.swift; sourceTree = "<group>"; };
 		0B0359352400690C00C2EA23 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		0B0359372400694600C2EA23 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -59,6 +59,8 @@
 		0B9D743424006C680027C2F2 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		0B9D743724006C950027C2F2 /* Venue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
 		0B9D743E2400767B0027C2F2 /* GenericCoderAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericCoderAPI.swift; sourceTree = "<group>"; };
+		807D6E7524008C0A000D393C /* CoreLocationSessionswift */ = {isa = PBXFileReference; lastKnownFileType = text; path = CoreLocationSessionswift; sourceTree = "<group>"; };
+		807D6E7724008C36000D393C /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Secret.swift; path = FoursquareProject/Services/Secret.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,11 +106,11 @@
 				0B03591C2400671F00C2EA23 /* Info.plist */,
 				0B0359172400671F00C2EA23 /* Assets.xcassets */,
 				0B9D74402400768B0027C2F2 /* Services */,
+				0B9D743624006C740027C2F2 /* Views */,
 				0B03593B2400697D00C2EA23 /* Controllers */,
 				0B9D743924006C9D0027C2F2 /* Models */,
 				0B035932240067C900C2EA23 /* Secrets */,
 				0B9D743D2400701A0027C2F2 /* Supporting Files */,
-				0B9D743624006C740027C2F2 /* Views */,
 			);
 			path = FoursquareProject;
 			sourceTree = "<group>";
@@ -125,7 +127,7 @@
 		0B035932240067C900C2EA23 /* Secrets */ = {
 			isa = PBXGroup;
 			children = (
-				0B035930240067C100C2EA23 /* Secret.swift */,
+				807D6E7724008C36000D393C /* Secret.swift */,
 			);
 			path = Secrets;
 			sourceTree = "<group>";
@@ -175,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				0B9D743E2400767B0027C2F2 /* GenericCoderAPI.swift */,
+				807D6E7524008C0A000D393C /* CoreLocationSessionswift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -286,15 +289,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B03594124006BC000C2EA23 /* FavoritesView.swift in Sources */,
+				807D6E7824008C36000D393C /* Secret.swift in Sources */,
 				0B03593A2400697900C2EA23 /* CreateViewController.swift in Sources */,
 				0B03593D24006BA900C2EA23 /* CreateView.swift in Sources */,
 				0B035934240068F800C2EA23 /* TabController.swift in Sources */,
 				0B9D743524006C680027C2F2 /* SearchView.swift in Sources */,
 				0B03593F24006BAF00C2EA23 /* DetailView.swift in Sources */,
 				0B0359132400671E00C2EA23 /* SearchViewController.swift in Sources */,
-				0B035931240067C100C2EA23 /* Secret.swift in Sources */,
 				0B03590F2400671E00C2EA23 /* AppDelegate.swift in Sources */,
 				0B0359362400690C00C2EA23 /* FavoritesViewController.swift in Sources */,
+				807D6E7624008C0A000D393C /* CoreLocationSessionswift in Sources */,
 				0B9D743F2400767B0027C2F2 /* GenericCoderAPI.swift in Sources */,
 				0B0359112400671E00C2EA23 /* SceneDelegate.swift in Sources */,
 				0B9D743824006C950027C2F2 /* Venue.swift in Sources */,
