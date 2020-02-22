@@ -17,6 +17,7 @@ class FavoritesViewController: UIViewController {
     init(_ dataPersistence: DataPersistence<Venue>) {
         self.dataPersistence = dataPersistence
         super.init(nibName: nil, bundle: nil)
+        setupNavigationBar()
     }
     
     required init?(coder: NSCoder) {
@@ -35,20 +36,47 @@ class FavoritesViewController: UIViewController {
         favoritesView.collectionView.dataSource = self
     }
     
+    private func setupNavigationBar() {
+        navigationController?.title = "My Collections"
+    }
+    
 
 }
 
 extension FavoritesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        10
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "favoritecell", for: indexPath) as? FavoritesCell else {
             return UICollectionViewCell()
         }
+        cell.layer.cornerRadius = 5
+        cell.layer.borderWidth = 5
+        cell.layer.borderColor = UIColor.black.cgColor
+        cell.clipsToBounds = true
         return cell
     }
+}
+
+extension FavoritesViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        CGSize(width: view.frame.width / 2.3, height: view.frame.width / 2)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        20
+    }
+    
 }
 
 extension FavoritesViewController: DataPersistenceDelegate {
