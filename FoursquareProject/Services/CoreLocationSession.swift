@@ -1,8 +1,8 @@
 //
-//  File.swift
+//  CoreLocationSession.swift
 //  FoursquareProject
 //
-//  Created by Maitree Bain on 2/21/20.
+//  Created by Ahad Islam on 2/22/20.
 //  Copyright © 2020 Ahad Islam. All rights reserved.
 //
 
@@ -55,5 +55,9 @@ class CoreLocationSession: NSObject {
     
     private func startMonitoringRegion() {
     }
+    
+}
+
+extension CoreLocationSession: CLLocationManagerDelegate {
     
 }
