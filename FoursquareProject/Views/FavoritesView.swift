@@ -14,6 +14,7 @@ class FavoritesView: UIView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+        cv.register(FavoritesCell.self, forCellWithReuseIdentifier: "favoritecell")
         cv.backgroundColor = .systemGroupedBackground
         return cv
     }()
