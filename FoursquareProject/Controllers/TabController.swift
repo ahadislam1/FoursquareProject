@@ -19,10 +19,10 @@ class TabController: UITabBarController {
         return vc
     }()
     
-    private lazy var favoritesVC: FavoritesViewController = {
+    private lazy var favoritesVC: UINavigationController = {
         let vc = FavoritesViewController(dataPersistence)
         vc.tabBarItem = UITabBarItem(title: "Favorites", image: UIImage(systemName: "book"), tag: 1)
-        return vc
+        return UINavigationController(rootViewController: vc)
     }()
     
 

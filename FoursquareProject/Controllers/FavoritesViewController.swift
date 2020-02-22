@@ -14,6 +14,11 @@ class FavoritesViewController: UIViewController {
     private let dataPersistence: DataPersistence<Venue>
     private let favoritesView = FavoritesView()
     
+    private lazy var addButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(buttonPressed))
+        return button
+    }()
+    
     init(_ dataPersistence: DataPersistence<Venue>) {
         self.dataPersistence = dataPersistence
         super.init(nibName: nil, bundle: nil)
@@ -36,8 +41,13 @@ class FavoritesViewController: UIViewController {
         favoritesView.collectionView.dataSource = self
     }
     
+    @objc private func buttonPressed() {
+        
+    }
+    
     private func setupNavigationBar() {
-        navigationController?.title = "My Collections"
+        title = "My Collections"
+        navigationItem.setRightBarButton(addButton, animated: true)
     }
     
 
@@ -52,10 +62,10 @@ extension FavoritesViewController: UICollectionViewDelegate, UICollectionViewDat
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "favoritecell", for: indexPath) as? FavoritesCell else {
             return UICollectionViewCell()
         }
-        cell.layer.cornerRadius = 5
-        cell.layer.borderWidth = 5
-        cell.layer.borderColor = UIColor.black.cgColor
-        cell.clipsToBounds = true
+//        cell.layer.cornerRadius = 5
+//        cell.layer.borderWidth = 5
+//        cell.layer.borderColor = UIColor.black.cgColor
+//        cell.clipsToBounds = true
         return cell
     }
 }
