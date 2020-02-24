@@ -13,12 +13,7 @@ class FavoritesViewController: UIViewController {
     
     private let dataPersistence: DataPersistence<FavoriteVenue>
     private let favoritesView = FavoritesView()
-    
-    private lazy var addButton: UIBarButtonItem = {
-        let button = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(buttonPressed))
-        return button
-    }()
-    
+        
     init(_ dataPersistence: DataPersistence<FavoriteVenue>) {
         self.dataPersistence = dataPersistence
         super.init(nibName: nil, bundle: nil)
@@ -41,13 +36,8 @@ class FavoritesViewController: UIViewController {
         favoritesView.collectionView.dataSource = self
     }
     
-    @objc private func buttonPressed() {
-        //TODO: Present CreateViewController
-    }
-    
     private func setupNavigationBar() {
         title = "My Collections"
-        navigationItem.setRightBarButton(addButton, animated: true)
     }
     
 
