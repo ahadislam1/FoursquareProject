@@ -13,7 +13,7 @@ class FavoritesViewController: UIViewController {
     
     private let dataPersistence: DataPersistence<FavoriteVenue>
     private let favoritesView = FavoritesView()
-        
+    
     init(_ dataPersistence: DataPersistence<FavoriteVenue>) {
         self.dataPersistence = dataPersistence
         super.init(nibName: nil, bundle: nil)

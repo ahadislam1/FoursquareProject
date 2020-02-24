@@ -23,6 +23,8 @@
 		0B21C80F240193460055EAA3 /* CoreLocationSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B21C80E240193460055EAA3 /* CoreLocationSession.swift */; };
 		0B36DC8224019D500098F8DC /* FavoritesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B36DC8124019D500098F8DC /* FavoritesCell.swift */; };
 		0B8E6902240447EB003D9262 /* FavoriteVenue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8E6901240447EB003D9262 /* FavoriteVenue.swift */; };
+		0B8E690624047AE4003D9262 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8E690524047AE4003D9262 /* ListViewController.swift */; };
+		0B8E690824047B33003D9262 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8E690724047B33003D9262 /* ListView.swift */; };
 		0B9D743524006C680027C2F2 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9D743424006C680027C2F2 /* SearchView.swift */; };
 		0B9D743824006C950027C2F2 /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9D743724006C950027C2F2 /* Venue.swift */; };
 		0B9D743C24006CE90027C2F2 /* ImageKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0B9D743B24006CE90027C2F2 /* ImageKit */; };
@@ -61,6 +63,8 @@
 		0B21C80E240193460055EAA3 /* CoreLocationSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreLocationSession.swift; sourceTree = "<group>"; };
 		0B36DC8124019D500098F8DC /* FavoritesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCell.swift; sourceTree = "<group>"; };
 		0B8E6901240447EB003D9262 /* FavoriteVenue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteVenue.swift; sourceTree = "<group>"; };
+		0B8E690524047AE4003D9262 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		0B8E690724047B33003D9262 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		0B9D743424006C680027C2F2 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		0B9D743724006C950027C2F2 /* Venue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
 		0B9D743E2400767B0027C2F2 /* GenericCoderAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericCoderAPI.swift; sourceTree = "<group>"; };
@@ -142,6 +146,7 @@
 				0B0359392400697900C2EA23 /* CreateViewController.swift */,
 				0B0359372400694600C2EA23 /* DetailViewController.swift */,
 				0B0359352400690C00C2EA23 /* FavoritesViewController.swift */,
+				0B8E690524047AE4003D9262 /* ListViewController.swift */,
 				0B0359122400671E00C2EA23 /* SearchViewController.swift */,
 				0B035933240068F800C2EA23 /* TabController.swift */,
 			);
@@ -155,6 +160,7 @@
 				0B03593E24006BAF00C2EA23 /* DetailView.swift */,
 				0B03594024006BC000C2EA23 /* FavoritesView.swift */,
 				0B36DC8124019D500098F8DC /* FavoritesCell.swift */,
+				0B8E690724047B33003D9262 /* ListView.swift */,
 				0B9D743424006C680027C2F2 /* SearchView.swift */,
 			);
 			path = Views;
@@ -295,6 +301,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B03594124006BC000C2EA23 /* FavoritesView.swift in Sources */,
+				0B8E690824047B33003D9262 /* ListView.swift in Sources */,
 				0B36DC8224019D500098F8DC /* FavoritesCell.swift in Sources */,
 				807D6E7824008C36000D393C /* Secret.swift in Sources */,
 				0B03593A2400697900C2EA23 /* CreateViewController.swift in Sources */,
@@ -308,6 +315,7 @@
 				0B03590F2400671E00C2EA23 /* AppDelegate.swift in Sources */,
 				0B0359362400690C00C2EA23 /* FavoritesViewController.swift in Sources */,
 				0B9D743F2400767B0027C2F2 /* GenericCoderAPI.swift in Sources */,
+				0B8E690624047AE4003D9262 /* ListViewController.swift in Sources */,
 				0B0359112400671E00C2EA23 /* SceneDelegate.swift in Sources */,
 				0B9D743824006C950027C2F2 /* Venue.swift in Sources */,
 				0B0359382400694600C2EA23 /* DetailViewController.swift in Sources */,
