@@ -9,6 +9,12 @@
 import UIKit
 
 class CreateViewController: UIViewController {
+    
+    private let createView = CreateView()
+    
+    override func loadView() {
+       view = createView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
