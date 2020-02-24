@@ -30,6 +30,7 @@ class FavoritesView: UIView {
     }
     
     private func commonInit() {
+        backgroundColor = .systemGroupedBackground
         configureCollectionView()
     }
     

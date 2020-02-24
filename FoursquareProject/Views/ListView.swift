@@ -12,6 +12,7 @@ class ListView: UIView {
     
     public lazy var tableView: UITableView = {
         let tv = UITableView()
+        tv.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         return tv
     }()
 
@@ -25,6 +26,7 @@ class ListView: UIView {
     }
     
     private func setupTableView() {
+        backgroundColor = .secondarySystemGroupedBackground
         addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
