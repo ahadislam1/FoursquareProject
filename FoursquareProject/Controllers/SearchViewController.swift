@@ -11,9 +11,9 @@ import DataPersistence
 
 class SearchViewController: UIViewController {
     
-    private let dataPersistence: DataPersistence<Venue>
+    private let dataPersistence: DataPersistence<FavoriteVenue>
     
-    init(_ dataPersistence: DataPersistence<Venue>) {
+    init(_ dataPersistence: DataPersistence<FavoriteVenue>) {
         self.dataPersistence = dataPersistence
         super.init(nibName: nil, bundle: nil)
     }
