@@ -11,7 +11,7 @@ import DataPersistence
 
 class FavoritesViewController: UIViewController {
     
-    private let dataPersistence: DataPersistence<Venue>
+    private let dataPersistence: DataPersistence<FavoriteVenue>
     private let favoritesView = FavoritesView()
     
     private lazy var addButton: UIBarButtonItem = {
@@ -19,7 +19,7 @@ class FavoritesViewController: UIViewController {
         return button
     }()
     
-    init(_ dataPersistence: DataPersistence<Venue>) {
+    init(_ dataPersistence: DataPersistence<FavoriteVenue>) {
         self.dataPersistence = dataPersistence
         super.init(nibName: nil, bundle: nil)
         setupNavigationBar()
