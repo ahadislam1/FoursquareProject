@@ -69,8 +69,13 @@ class SearchViewController: UIViewController {
                 print(error)
             case .success(let model):
                 self.venues = model.response.venues
+                
+            }
+        }
+    }
+    
     private func convertPlacenameToCoordinate(_ placename: String) {
-        locationSession.convertPlacemarkToCoordinate(addressString: placename) { [weak self] (result) in
+        locationSession.convertPlaceNameToCoordinate(addressString: placename) { [weak self] (result) in
             switch result {
             case .failure(let error):
                 print("error: \(error)")
@@ -106,15 +111,6 @@ class SearchViewController: UIViewController {
 }
 
 extension SearchViewController: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        if searchBar == searchView.venueSearch {
-            if let text = searchBar.text {
-                let query = text.lowercased().addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-                loadData(query)
-            }
-        }
-        searchBar.resignFirstResponder()
-    }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
@@ -139,7 +135,7 @@ extension SearchViewController: UISearchBarDelegate {
 
 extension SearchViewController: UICollectionViewDelegateFlowLayout {
     
-//}
+}
 
 //extension SearchViewController: UICollectionViewDataSource {
 //    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

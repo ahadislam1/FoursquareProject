@@ -9,8 +9,6 @@
 import Foundation
 import CoreLocation
 
-import Foundation
-import CoreLocation
 
 class CoreLocationSession: NSObject {
   
@@ -35,22 +33,6 @@ class CoreLocationSession: NSObject {
     
     // more aggressive solution of GPS data collection
     //locationManager.startUpdatingLocation()
-    public func convertPlacemarkToCoordinate(addressString: String,completion: @escaping(Result<CLLocationCoordinate2D,Error>) -> ()) {
-        
-        CLGeocoder().geocodeAddressString(addressString) { (placemarks, error) in
-            if let error = error {
-                print("geocodeAddressString: \(error)")
-                completion(.failure(error))
-            }
-            
-            if let firstPlacemark = placemarks?.first,
-                let location = firstPlacemark.location {
-                
-                print("place name coordinate is \(location.coordinate)")
-                completion(.success(location.coordinate))
-            }
-        }
-    }
     
     // less aggressive on battery consumption and GPS data collection
     startSignificantLocationChanges()
@@ -106,7 +88,7 @@ class CoreLocationSession: NSObject {
 //    let region = CLCircularRegion(center: location.coordinate, radius: 500, identifier: identifier)
 //    region.notifyOnEntry = true
 //    region.notifyOnExit = false
-//
+//    
 //    locationManager.startMonitoring(for: region)
 //  }
 }
