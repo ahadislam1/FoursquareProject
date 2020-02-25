@@ -13,11 +13,10 @@ class FavoritesViewController: UIViewController {
     
     private let dataPersistence: DataPersistence<FavoriteVenue>
     private let favoritesView = FavoritesView()
-        
+    
     init(_ dataPersistence: DataPersistence<FavoriteVenue>) {
         self.dataPersistence = dataPersistence
         super.init(nibName: nil, bundle: nil)
-        setupNavigationBar()
     }
     
     required init?(coder: NSCoder) {
@@ -34,16 +33,22 @@ class FavoritesViewController: UIViewController {
         dataPersistence.delegate = self
         favoritesView.collectionView.delegate = self
         favoritesView.collectionView.dataSource = self
+        setupNavigationBar()
     }
     
     private func setupNavigationBar() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .automatic
         title = "My Collections"
     }
-    
 
 }
 
 extension FavoritesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        navigationController?.pushViewController(ListViewController(dataPersistence), animated: true)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         10
     }
