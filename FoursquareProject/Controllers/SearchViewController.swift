@@ -28,6 +28,15 @@ class SearchViewController: UIViewController {
     
     private let dataPersistence: DataPersistence<FavoriteVenue>
     
+    private var venues = [Venue]() {
+        didSet {
+            DispatchQueue.main.async {
+                self.loadMapView()
+            }
+        }
+    }
+    
+    
     init(_ dataPersistence: DataPersistence<FavoriteVenue>) {
         self.dataPersistence = dataPersistence
         super.init(nibName: nil, bundle: nil)
@@ -51,6 +60,15 @@ class SearchViewController: UIViewController {
         searchView.mapView.delegate = self
     }
     
+    private func loadData(_ query: String) {
+        let endpointURL = "https://api.foursquare.com/v2/venues/search?client_id=\(Secret.appId)&client_secret=\(Secret.appSecret)&v=20200221&ll=40.735,-73.78&query=\(query)"
+        
+        GenericCoderAPI.manager.getJSON(objectType: VenueModel.self, with: endpointURL) { result in
+            switch result {
+            case .failure(let error):
+                print(error)
+            case .success(let model):
+                self.venues = model.response.venues
     private func convertPlacenameToCoordinate(_ placename: String) {
         locationSession.convertPlacemarkToCoordinate(addressString: placename) { [weak self] (result) in
             switch result {
@@ -65,14 +83,38 @@ class SearchViewController: UIViewController {
                 
                 self?.searchView.mapView.setRegion(region, animated: true)
             }
+                                                                            
         }
     }
     
+    private func createAnnotations() -> [MKPointAnnotation] {
+        var annotations = [MKPointAnnotation]()
+        venues.forEach({
+            let point = MKPointAnnotation()
+            point.coordinate = CLLocationCoordinate2D(latitude: $0.location.lat, longitude: $0.location.lng)
+            point.title = $0.name
+            annotations.append(point)
+        })
+        return annotations
+    }
+    
+    private func loadMapView() {
+        searchView.mapView.showAnnotations(createAnnotations(), animated: true)
+    }
 
 
 }
 
 extension SearchViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if searchBar == searchView.venueSearch {
+            if let text = searchBar.text {
+                let query = text.lowercased().addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+                loadData(query)
+            }
+        }
+        searchBar.resignFirstResponder()
+    }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
@@ -84,6 +126,11 @@ extension SearchViewController: UISearchBarDelegate {
         if searchBar == searchView.citySearch {
         citySearch = citySearchText
             searchBar.text = ""
+        } else if searchBar == searchView.venueSearch {
+            if let text = searchBar.text {
+                let query = text.lowercased().addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+                loadData(query)
+            }
         }
         
     }
@@ -92,7 +139,7 @@ extension SearchViewController: UISearchBarDelegate {
 
 extension SearchViewController: UICollectionViewDelegateFlowLayout {
     
-}
+//}
 
 //extension SearchViewController: UICollectionViewDataSource {
 //    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
