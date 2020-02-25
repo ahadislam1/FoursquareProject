@@ -13,8 +13,20 @@ import MapKit
 class SearchViewController: UIViewController {
     
     private let searchView = SearchView()
+    private var coordinate = CLLocationCoordinate2DMake(40.123, -70.345) {
+        didSet {
+            print(coordinate)
+        }
+    }
+    
+    private var locationSession = CoreLocationSession()
+    private var citySearch = "" {
+        didSet {
+            convertPlacenameToCoordinate(citySearch)
+        }
+    }
+    
     private let dataPersistence: DataPersistence<FavoriteVenue>
-    private let locationSession = CoreLocationSession()
     
     private var venues = [Venue]() {
         didSet {
@@ -57,7 +69,21 @@ class SearchViewController: UIViewController {
                 print(error)
             case .success(let model):
                 self.venues = model.response.venues
+    private func convertPlacenameToCoordinate(_ placename: String) {
+        locationSession.convertPlacemarkToCoordinate(addressString: placename) { [weak self] (result) in
+            switch result {
+            case .failure(let error):
+                print("error: \(error)")
+            case .success(let coordinate):
+               
+                
+                self?.coordinate = coordinate
+                
+                let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 2000, longitudinalMeters: 2000)
+                
+                self?.searchView.mapView.setRegion(region, animated: true)
             }
+                                                                            
         }
     }
     
@@ -90,22 +116,41 @@ extension SearchViewController: UISearchBarDelegate {
         searchBar.resignFirstResponder()
     }
     
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        guard let citySearchText = searchBar.text,
+        !citySearchText.isEmpty else {
+            return
+        }
+        
+        if searchBar == searchView.citySearch {
+        citySearch = citySearchText
+            searchBar.text = ""
+        } else if searchBar == searchView.venueSearch {
+            if let text = searchBar.text {
+                let query = text.lowercased().addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+                loadData(query)
+            }
+        }
+        
+    }
+    
 }
 
 extension SearchViewController: UICollectionViewDelegateFlowLayout {
     
-}
+//}
 
 //extension SearchViewController: UICollectionViewDataSource {
 //    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        0
+//
 //    }
 //
 //    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 //
 //    }
-    
-    
+//
+//
 //}
 
 extension SearchViewController: MKMapViewDelegate {
