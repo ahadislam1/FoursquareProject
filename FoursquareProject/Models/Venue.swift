@@ -21,11 +21,9 @@ struct VenueModel: Codable {
 // MARK: - VenueWrapper
 struct VenueWrapper: Codable {
     let venues: [Venue]
-    let confident: Bool
 
     enum CodingKeys: String, CodingKey {
         case venues = "venues"
-        case confident = "confident"
     }
 }
 
