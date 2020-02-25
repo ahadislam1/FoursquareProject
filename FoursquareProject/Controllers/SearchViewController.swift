@@ -14,9 +14,13 @@ class SearchViewController: UIViewController {
     
     private let searchView = SearchView()
     private let dataPersistence: DataPersistence<FavoriteVenue>
+    private let locationSession = CoreLocationSession()
+    
     private var venues = [Venue]() {
         didSet {
-            print(venues.count)
+            DispatchQueue.main.async {
+                self.loadMapView()
+            }
         }
     }
     
@@ -55,6 +59,21 @@ class SearchViewController: UIViewController {
                 self.venues = model.response.venues
             }
         }
+    }
+    
+    private func createAnnotations() -> [MKPointAnnotation] {
+        var annotations = [MKPointAnnotation]()
+        venues.forEach({
+            let point = MKPointAnnotation()
+            point.coordinate = CLLocationCoordinate2D(latitude: $0.location.lat, longitude: $0.location.lng)
+            point.title = $0.name
+            annotations.append(point)
+        })
+        return annotations
+    }
+    
+    private func loadMapView() {
+        searchView.mapView.showAnnotations(createAnnotations(), animated: true)
     }
 
 
