@@ -35,7 +35,6 @@ class DetailView: UIView {
         stackView.addArrangedSubview(label4)
         stackView.distribution = .equalSpacing
         stackView.axis = .vertical
-        stackView.backgroundColor = .systemBlue
         return stackView
     }()
     
@@ -102,8 +101,8 @@ class DetailView: UIView {
 }
 
     func setUpScrollViewConstraints() {
-        scrollView.addSubview(imageView)
-        scrollView.addSubview(stackView)
+        
+       
         
 
         addSubview(scrollView)
@@ -116,14 +115,15 @@ class DetailView: UIView {
             scrollView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
         
-         setUpImageView()
+        setUpImageView()
         setUpStackView()
         
     }
     
     
     func setUpStackView() {
-//
+        scrollView.addSubview(stackView)
+        stackView.backgroundColor = .systemPink
         stackView.translatesAutoresizingMaskIntoConstraints = false
 //
         NSLayoutConstraint.activate([
@@ -139,6 +139,7 @@ class DetailView: UIView {
 }
     
     func setUpImageView() {
+        scrollView.addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
