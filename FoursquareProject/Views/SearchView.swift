@@ -13,6 +13,7 @@ class SearchView: UIView {
     
     public lazy var venueSearch: UISearchBar = {
         let search = UISearchBar()
+        search.placeholder = "Enter a search term.."
         return search
     }()
     
