@@ -63,7 +63,7 @@ struct Item: Codable {
     let height: Int
     let checkin: Checkin
     let visibility: String
-    var imageURL: String { prefix + suffix }
+    var imageURL: String { prefix + "original" + suffix }
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
@@ -75,6 +75,13 @@ struct Item: Codable {
         case height = "height"
         case checkin = "checkin"
         case visibility = "visibility"
+    }
+}
+
+extension Item {
+    
+    func getImageUrl(imageSize: String) -> String {
+        self.prefix + "\(imageSize)" + self.suffix
     }
 }
 
