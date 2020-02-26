@@ -13,7 +13,7 @@ import MapKit
 class SearchViewController: UIViewController {
     
     private let searchView = SearchView()
-    private var coordinate = CLLocationCoordinate2DMake(40.123, -70.345) {
+    private var coordinate = CLLocationCoordinate2DMake(40.739658, -73.7901582) {
         didSet {
             print(coordinate)
         }
@@ -58,10 +58,13 @@ class SearchViewController: UIViewController {
         searchView.collectionView.delegate = self
 //        searchView.collectionView.dataSource = self
         searchView.mapView.delegate = self
+        searchView.mapView.showsUserLocation = true
+        citySearch = "fresh meadows"
     }
     
     private func loadData(_ query: String) {
-        let endpointURL = "https://api.foursquare.com/v2/venues/search?client_id=\(Secret.appId)&client_secret=\(Secret.appSecret)&v=20200221&ll=40.735,-73.78&query=\(query)"
+        
+        let endpointURL = "https://api.foursquare.com/v2/venues/search?client_id=\(Secret.appId)&client_secret=\(Secret.appSecret)&v=20200221&ll=\(coordinate.latitude),\(coordinate.longitude)&query=\(query)&radius=2000"
         
         GenericCoderAPI.manager.getJSON(objectType: VenueModel.self, with: endpointURL) { result in
             switch result {
