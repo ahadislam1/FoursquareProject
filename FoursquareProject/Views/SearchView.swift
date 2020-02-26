@@ -37,6 +37,7 @@ class SearchView: UIView {
         layout.scrollDirection = .horizontal
       let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
       cv.backgroundColor = .systemGroupedBackground
+    cv.alpha = 0.0
       return cv
     }()
     
@@ -54,6 +55,7 @@ class SearchView: UIView {
         setUpVenueSearchConstraints()
         setUpCitySearchConstraints()
         setUpMapViewConstraints()
+        setUpCVConstraints()
     }
     
     private func setUpVenueSearchConstraints() {
@@ -90,6 +92,19 @@ class SearchView: UIView {
             mapView.leadingAnchor.constraint(equalTo: leadingAnchor),
             mapView.trailingAnchor.constraint(equalTo: trailingAnchor),
             mapView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
+        ])
+    }
+    
+    private func setUpCVConstraints() {
+        addSubview(collectionView)
+        
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo:safeAreaLayoutGuide.trailingAnchor),
+            collectionView.heightAnchor.constraint(equalToConstant: 100)
         ])
     }
     
