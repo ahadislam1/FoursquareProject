@@ -14,6 +14,7 @@ class SearchCell: UICollectionViewCell {
     public lazy var imageView: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(systemName: "map")
+        image.tintColor = .brown
         return image
     }()
     
@@ -40,12 +41,35 @@ class SearchCell: UICollectionViewCell {
             imageView.topAnchor.constraint(equalTo: topAnchor),
             imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            imageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.8)
+            imageView.heightAnchor.constraint(equalTo: heightAnchor)
         ])
     }
     
-//    public func configureCell(forVenue venue: ) {
-//        imageView.getImage(with: venue, completion: <#T##(Result<UIImage, AppError>) -> ()#>)
-//    }
+    public func configureCell(for venue: Venue) {
+        
+        GenericCoderAPI.manager.getJSON(objectType: PhotoWrapper.self, with: "https://api.foursquare.com/v2/venues/\(venue.id)/photos?client_id=\(Secret.appId)&client_secret=\(Secret.appSecret)&v=20200221") { (result) in
+            
+            switch result {
+            case .failure(let appError):
+                print("no images found: \(appError)")
+            case .success(let photo):
+                let images = photo.response.photos.items.map {$0.getImageUrl(imageSize: "300x300")}
+                guard let singleImage = images.first else { return }
+                DispatchQueue.main.async {
+                    self.imageView.getImage(with: singleImage) { (result) in
+                        
+                        switch result {
+                        case .failure:
+                            print("image cannot load")
+                        case .success(let image):
+                            DispatchQueue.main.async {
+                                self.imageView.image = image
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
     
 }

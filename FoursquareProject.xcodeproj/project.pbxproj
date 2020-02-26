@@ -30,6 +30,7 @@
 		0B9D743C24006CE90027C2F2 /* ImageKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0B9D743B24006CE90027C2F2 /* ImageKit */; };
 		0B9D743F2400767B0027C2F2 /* GenericCoderAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9D743E2400767B0027C2F2 /* GenericCoderAPI.swift */; };
 		0BD4BA512405DCC500C9F37F /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD4BA502405DCC500C9F37F /* Photo.swift */; };
+		8070E1F82406F0340017273C /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8070E1F72406F0340017273C /* SearchCell.swift */; };
 		807D6E7824008C36000D393C /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807D6E7724008C36000D393C /* Secret.swift */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +71,7 @@
 		0B9D743724006C950027C2F2 /* Venue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
 		0B9D743E2400767B0027C2F2 /* GenericCoderAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericCoderAPI.swift; sourceTree = "<group>"; };
 		0BD4BA502405DCC500C9F37F /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		8070E1F72406F0340017273C /* SearchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		807D6E7724008C36000D393C /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Secret.swift; path = FoursquareProject/Services/Secret.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -162,6 +164,7 @@
 				0B03593E24006BAF00C2EA23 /* DetailView.swift */,
 				0B03594024006BC000C2EA23 /* FavoritesView.swift */,
 				0B36DC8124019D500098F8DC /* FavoritesCell.swift */,
+				8070E1F72406F0340017273C /* SearchCell.swift */,
 				0B8E690724047B33003D9262 /* ListView.swift */,
 				0B9D743424006C680027C2F2 /* SearchView.swift */,
 			);
@@ -313,6 +316,7 @@
 				0B035934240068F800C2EA23 /* TabController.swift in Sources */,
 				0B9D743524006C680027C2F2 /* SearchView.swift in Sources */,
 				0B03593F24006BAF00C2EA23 /* DetailView.swift in Sources */,
+				8070E1F82406F0340017273C /* SearchCell.swift in Sources */,
 				0B0359132400671E00C2EA23 /* SearchViewController.swift in Sources */,
 				0B21C80F240193460055EAA3 /* CoreLocationSession.swift in Sources */,
 				0B8E6902240447EB003D9262 /* FavoriteVenue.swift in Sources */,
