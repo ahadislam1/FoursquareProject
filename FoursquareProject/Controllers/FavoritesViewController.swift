@@ -46,7 +46,8 @@ class FavoritesViewController: UIViewController {
 
 extension FavoritesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        navigationController?.pushViewController(ListViewController(dataPersistence), animated: true)
+        // TODO: Setup venues
+        navigationController?.pushViewController(ListViewController(dataPersistence, venues: [Venue]()), animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
