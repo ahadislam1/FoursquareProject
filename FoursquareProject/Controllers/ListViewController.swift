@@ -13,9 +13,11 @@ class ListViewController: UIViewController {
     
     private let dataPersistence: DataPersistence<FavoriteVenue>
     private let listView = ListView()
+    private let venues: [Venue]
     
-    init(_ dataPersistence: DataPersistence<FavoriteVenue>) {
+    init(_ dataPersistence: DataPersistence<FavoriteVenue>, venues: [Venue]) {
         self.dataPersistence = dataPersistence
+        self.venues = venues
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -34,19 +36,27 @@ class ListViewController: UIViewController {
         
         listView.tableView.delegate = self
         listView.tableView.dataSource = self
+        navigationController?.navigationBar.isHidden = false
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
         title = "Title"
     }
     
     
+    
 }
 
-extension ListViewController: UITableViewDataSource, UITableViewDelegate {    
+extension ListViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        navigationController?.pushViewController(DetailViewController(), animated: true)
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return venues.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = venues[indexPath.row].name
         return cell
     }
     

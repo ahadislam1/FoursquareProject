@@ -13,20 +13,20 @@ import MapKit
 class SearchViewController: UIViewController {
     
     private let searchView = SearchView()
+    private let dataPersistence: DataPersistence<FavoriteVenue>
+    private var locationSession = CoreLocationSession()
+
     private var coordinate = CLLocationCoordinate2DMake(40.123, -70.345) {
         didSet {
             print(coordinate)
         }
     }
     
-    private var locationSession = CoreLocationSession()
     private var citySearch = "" {
         didSet {
             convertPlacenameToCoordinate(citySearch)
         }
     }
-    
-    private let dataPersistence: DataPersistence<FavoriteVenue>
     
     private var venues = [Venue]() {
         didSet {
@@ -53,11 +53,26 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureSearchView()
         searchView.venueSearch.delegate = self
         searchView.citySearch.delegate = self
         searchView.collectionView.delegate = self
 //        searchView.collectionView.dataSource = self
         searchView.mapView.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.navigationBar.isHidden = true
+    }
+    
+    @objc private func buttonPressed() {
+        navigationController?.pushViewController(ListViewController(dataPersistence, venues: venues), animated: true)
+    }
+    
+    private func configureSearchView() {
+        searchView.expansionButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
     }
     
     private func loadData(_ query: String) {

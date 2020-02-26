@@ -13,10 +13,10 @@ class TabController: UITabBarController {
     
     private let dataPersistence = DataPersistence<FavoriteVenue>(filename: "favorites.plist")
     
-    private lazy var searchVC: SearchViewController = {
+    private lazy var searchVC: UINavigationController = {
         let vc = SearchViewController(dataPersistence)
         vc.tabBarItem = UITabBarItem(title: "Search", image: UIImage(systemName: "magnifyingglass"), tag: 0)
-        return vc
+        return UINavigationController(rootViewController: vc)
     }()
     
     private lazy var favoritesVC: UINavigationController = {
