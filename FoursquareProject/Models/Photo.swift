@@ -63,7 +63,6 @@ struct Item: Codable {
     let height: Int
     let checkin: Checkin
     let visibility: String
-    var imageURL: String { prefix + suffix }
 
     enum CodingKeys: String, CodingKey {
         case id = "id"

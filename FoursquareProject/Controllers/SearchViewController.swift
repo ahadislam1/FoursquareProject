@@ -13,20 +13,19 @@ import MapKit
 class SearchViewController: UIViewController {
     
     private let searchView = SearchView()
-    private var coordinate = CLLocationCoordinate2DMake(40.123, -70.345) {
+    private let dataPersistence: DataPersistence<FavoriteVenue>
+    private var locationSession = CoreLocationSession()
+    private var coordinate = CLLocationCoordinate2DMake(40.739658, -73.7901582) {
         didSet {
             print(coordinate)
         }
     }
     
-    private var locationSession = CoreLocationSession()
     private var citySearch = "" {
         didSet {
             convertPlacenameToCoordinate(citySearch)
         }
     }
-    
-    private let dataPersistence: DataPersistence<FavoriteVenue>
     
     private var venues = [Venue]() {
         didSet {
@@ -65,16 +64,34 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .systemGroupedBackground
+        configureSearchView()
         searchView.venueSearch.delegate = self
         searchView.citySearch.delegate = self
         searchView.collectionView.delegate = self
         searchView.collectionView.dataSource = self
         searchView.collectionView.register(SearchCell.self, forCellWithReuseIdentifier: "searchCell")
         searchView.mapView.delegate = self
+        searchView.mapView.showsUserLocation = true
+        citySearch = "fresh meadows"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.navigationBar.isHidden = true
+    }
+    
+    @objc private func buttonPressed() {
+        navigationController?.pushViewController(ListViewController(dataPersistence, venues: venues), animated: true)
+    }
+    
+    private func configureSearchView() {
+        searchView.expansionButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
     }
     
     private func loadData(_ query: String) {
-        let endpointURL = "https://api.foursquare.com/v2/venues/search?client_id=\(Secret.appId)&client_secret=\(Secret.appSecret)&v=20200221&ll=40.735,-73.78&query=\(query)"
+        
+        let endpointURL = "https://api.foursquare.com/v2/venues/search?client_id=\(Secret.appId)&client_secret=\(Secret.appSecret)&v=20200221&ll=\(coordinate.latitude),\(coordinate.longitude)&query=\(query)&radius=2000"
         
         GenericCoderAPI.manager.getJSON(objectType: VenueModel.self, with: endpointURL) { result in
             switch result {
