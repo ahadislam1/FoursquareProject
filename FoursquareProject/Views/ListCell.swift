@@ -11,26 +11,35 @@ import UIKit
 class ListCell: UITableViewCell {
     
     public lazy var venueImage: UIImageView = {
-       let image = UIImageView()
+        let image = UIImageView()
+        image.image = UIImage(systemName: "tray.and.arrow.down")
+        image.tintColor = .black
+        image.alpha = 0.8
+        image.contentMode = .scaleAspectFit
         return image
     }()
     
     private lazy var view: UIView = {
-       let view = UIView()
+        let view = UIView()
+        view.backgroundColor = .black
+        view.alpha = 0.5
         return view
     }()
-
+    
     public lazy var venueName: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
+        label.textColor = .white
+        label.numberOfLines = 0
+        label.font = UIFont(name: "Kefa", size: 20)
         return label
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-            super.init(style: style, reuseIdentifier: reuseIdentifier)
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         commonInit()
-     }
-     required init?(coder aDecoder: NSCoder) {
-       super.init(coder: aDecoder)
+    }
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
         commonInit()
     }
     
@@ -79,7 +88,32 @@ class ListCell: UITableViewCell {
     }
     
     public func configureCell(for venue: Venue) {
+        venueName.text = venue.name
         
+        GenericCoderAPI.manager.getJSON(objectType: PhotoWrapper.self, with: "https://api.foursquare.com/v2/venues/\(venue.id)/photos?client_id=\(Secret.appId)&client_secret=\(Secret.appSecret)&v=20200221") { (result) in
+            
+            switch result {
+            case .failure(let appError):
+                print("no images found: \(appError)")
+            case .success(let photo):
+                let images = photo.response.photos.items.map {$0.getImageUrl(imageSize: "300x300")}
+                guard let singleImage = images.first else { return }
+                DispatchQueue.main.async {
+                    self.venueImage.getImage(with: singleImage) { (result) in
+                        
+                        switch result {
+                        case .failure:
+                            print("image cannot load")
+                        case .success(let image):
+                            DispatchQueue.main.async {
+                                self.venueImage.image = image
+                                self.venueImage.alpha = 1.0
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
     
 }
