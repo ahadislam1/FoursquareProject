@@ -36,10 +36,13 @@ class ListViewController: UIViewController {
         
         listView.tableView.delegate = self
         listView.tableView.dataSource = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
-        title = "Restaurants"
     }
     
     
