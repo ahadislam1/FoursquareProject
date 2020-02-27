@@ -7,10 +7,23 @@
 //
 
 import UIKit
+import DataPersistence
 
 class CreateViewController: UIViewController {
     
+    private let dataPersistence: DataPersistence<FavoriteVenue>
+    private let venue: Venue
     private let createView = CreateView()
+    
+    init(dataPersistence: DataPersistence<FavoriteVenue>, venue: Venue) {
+        self.dataPersistence = dataPersistence
+        self.venue = venue
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func loadView() {
        view = createView
@@ -19,8 +32,7 @@ class CreateViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .systemBackground
-        
+        navigationItem.largeTitleDisplayMode = .never
     }
     
 
