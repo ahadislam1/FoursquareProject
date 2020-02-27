@@ -12,7 +12,7 @@ class ListView: UIView {
     
     public lazy var tableView: UITableView = {
         let tv = UITableView()
-        tv.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tv.register(ListCell.self, forCellReuseIdentifier: "listCell")
         return tv
     }()
 
