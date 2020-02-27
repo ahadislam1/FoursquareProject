@@ -48,7 +48,7 @@ class ListViewController: UIViewController {
 
 extension ListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        navigationController?.pushViewController(DetailViewController(), animated: true)
+        navigationController?.pushViewController(DetailViewController(dataPersistence, venue: venues[indexPath.row]), animated: true)
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return venues.count
