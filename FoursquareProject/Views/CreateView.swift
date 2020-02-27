@@ -14,6 +14,7 @@ class CreateView: UIView {
         let tf = UITextField()
         tf.backgroundColor = .systemBackground
         tf.borderStyle = .bezel
+        tf.placeholder = "Create a collection.."
         return tf
     }()
     
@@ -46,17 +47,17 @@ class CreateView: UIView {
         NSLayoutConstraint.activate([
             textField.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20),
             textField.centerXAnchor.constraint(equalTo: centerXAnchor),
-            textField.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.5)])
+            textField.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.65)])
     }
     
     private func setupCollectionView() {
         addSubview(collectionView)
-        collectionView.backgroundColor = .none
+        collectionView.backgroundColor = .tertiarySystemBackground
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            collectionView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.3)])
+            collectionView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.4)])
     }
 }

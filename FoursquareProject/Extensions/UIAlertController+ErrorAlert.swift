@@ -14,4 +14,11 @@ extension UIAlertController {
         alertvc.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         return alertvc
     }
+    
+    public static func successAlert(_ body: String) -> UIAlertController {
+        let alertvc = UIAlertController(title: "Success", message: body, preferredStyle: .alert)
+        alertvc.addAction(UIAlertAction(title: "OK", style: .cancel))
+        return alertvc
+    }
+    
 }

@@ -19,6 +19,7 @@ class FavoritesCell: UICollectionViewCell {
     private lazy var titleLabel: UILabel = {
         let l = UILabel()
         l.text = "Category"
+        l.font = UIFont.preferredFont(forTextStyle: .headline)
         return l
     }()
     
@@ -87,7 +88,7 @@ class FavoritesCell: UICollectionViewCell {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: imageView.leadingAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: 18),
             titleLabel.trailingAnchor.constraint(equalTo: imageView.trailingAnchor)])
     }
 }

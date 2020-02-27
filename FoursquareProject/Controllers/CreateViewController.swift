@@ -23,6 +23,11 @@ class CreateViewController: UIViewController {
     private var favoriteVenues = [FavoriteVenue]() {
         didSet {
             createView.collectionView.reloadData()
+            if favoriteVenues.isEmpty {
+                createView.collectionView.backgroundView = EmptyView(title: "Saved Categories", message: "You haven't saved any venues yet.")
+            } else {
+                createView.collectionView.backgroundView = nil
+            }
         }
     }
     
@@ -59,10 +64,54 @@ class CreateViewController: UIViewController {
         createView.collectionView.dataSource = self
         createView.textField.delegate = self
         loadData()
+        validateVenue()
     }
     
     @objc private func buttonPressed() {
-        
+        if createButton.image == UIImage(systemName: "bookmark") {
+            guard let text = createView.textField.text, !text.isEmpty else {
+                let alertvc = UIAlertController.errorAlert("Textfield is empty.")
+                present(alertvc, animated: true)
+                return
+            }
+            createButton.image = UIImage(systemName: "bookmark.fill")
+            createFavoriteVenue(text.capitalized, venue: venue)
+        } else {
+            guard let x = ((favoriteVenues.map {$0.venue}).firstIndex{ $0 == venue}) else {
+                let alertvc = UIAlertController.errorAlert("Error finding venue.")
+                self.present(alertvc, animated: true)
+                return
+            }
+            do {
+                try dataPersistence.deleteItem(at: x)
+                loadData()
+                navigationController?.popViewController(animated: true)
+            } catch {
+                let alertvc = UIAlertController.errorAlert("Error deleting venue: \(error.localizedDescription)")
+                self.present(alertvc, animated: true)
+                return
+                
+            }
+        }
+    }
+    
+    private func createFavoriteVenue(_ title: String, venue: Venue) {
+        let favoriteVenue = FavoriteVenue(venue: venue, title: title)
+        do {
+            try dataPersistence.createItem(favoriteVenue)
+            navigationController?.popViewController(animated: true)
+        } catch {
+            let alertvc = UIAlertController.errorAlert("\(error.localizedDescription)")
+            present(alertvc, animated: true, completion: nil)
+        }
+    }
+    
+    private func validateVenue() {
+        if (favoriteVenues.map{$0.venue}).contains(venue) {
+            createButton.image = UIImage(systemName: "bookmark.fill")
+        } else {
+            createButton.image = UIImage(systemName: "bookmark")
+        }
     }
     
     private func loadData() {
@@ -75,12 +124,18 @@ class CreateViewController: UIViewController {
     
     private func setupNavigationBar() {
         navigationItem.largeTitleDisplayMode = .never
+        navigationItem.setRightBarButton(createButton, animated: true)
     }
     
     
 }
 
 extension CreateViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let title = groupedFavoriteVenuesKeys[indexPath.row]
+        createFavoriteVenue(title, venue: venue)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return groupedFavoriteVenues.count
     }
@@ -99,7 +154,11 @@ extension CreateViewController: UICollectionViewDelegate, UICollectionViewDataSo
 
 extension CreateViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: view.frame.width / 2, height: view.frame.width / 2)
+        CGSize(width: view.frame.width / 2.3, height: view.frame.width / 2.3)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        UIEdgeInsets(top: 20, left: 5, bottom: 20, right: 5)
     }
 }
 
