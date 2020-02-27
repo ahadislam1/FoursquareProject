@@ -39,6 +39,8 @@ class SearchView: UIView {
     
     public lazy var expansionButton: UIButton = {
         let button = UIButton()
+        button.backgroundColor = .black
+        button.layer.cornerRadius = 10
         button.setImage(UIImage(systemName: "table"), for: .normal)
         return button
     }()
@@ -65,10 +67,11 @@ class SearchView: UIView {
     private func commonInit() {
         backgroundColor = .systemBackground
         setUpMapViewConstraints()
+        setUpCVConstraints()
         setUpViewConstraints()
+        setUpExansionButtonConstraints()
         setUpVenueSearchConstraints()
         setUpCitySearchConstraints()
-        setUpCVConstraints()
     }
     
     private func setUpMapViewConstraints() {
@@ -110,13 +113,26 @@ class SearchView: UIView {
         ])
     }
     
+    private func setUpExansionButtonConstraints() {
+        addSubview(expansionButton)
+        
+        expansionButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            expansionButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 8),
+            expansionButton.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.04),
+            expansionButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            expansionButton.widthAnchor.constraint(equalToConstant: 40)
+        ])
+    }
+    
     private func setUpVenueSearchConstraints() {
         addSubview(venueSearch)
         
         venueSearch.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            venueSearch.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
+            venueSearch.topAnchor.constraint(equalTo: expansionButton.bottomAnchor),
             venueSearch.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             venueSearch.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         ])
@@ -128,7 +144,7 @@ class SearchView: UIView {
         citySearch.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            citySearch.topAnchor.constraint(equalTo: venueSearch.bottomAnchor, constant: 8),
+            citySearch.topAnchor.constraint(equalTo: venueSearch.bottomAnchor),
             citySearch.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             citySearch.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         ])
