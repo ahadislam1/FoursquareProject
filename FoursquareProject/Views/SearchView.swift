@@ -19,12 +19,16 @@ class SearchView: UIView {
     public lazy var venueSearch: UISearchBar = {
         let search = UISearchBar()
         search.placeholder = "Enter a search term.."
+        search.layer.cornerRadius = 10
+        search.layer.masksToBounds = true
         return search
     }()
     
     public lazy var citySearch: UISearchBar = {
         let search = UISearchBar()
         search.placeholder = "Enter City Name"
+        search.layer.cornerRadius = 10
+        search.layer.masksToBounds = true
         return search
     }()
     
@@ -60,57 +64,11 @@ class SearchView: UIView {
     
     private func commonInit() {
         backgroundColor = .systemBackground
-        setupView()
-        setUpVenueSearchConstraints()
-        setupButton()
-        setUpCitySearchConstraints()
         setUpMapViewConstraints()
+        setUpViewConstraints()
+        setUpVenueSearchConstraints()
+        setUpCitySearchConstraints()
         setUpCVConstraints()
-    }
-    
-    private func setupView() {
-        addSubview(view)
-        view.backgroundColor = .systemBackground
-        view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            view.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            view.leadingAnchor.constraint(equalTo: leadingAnchor),
-            view.trailingAnchor.constraint(equalTo: trailingAnchor),
-            view.heightAnchor.constraint(equalToConstant: citySearch.intrinsicContentSize.height * 2)])
-    }
-    
-    private func setupButton() {
-        view.addSubview(expansionButton)
-        expansionButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            expansionButton.topAnchor.constraint(equalTo: venueSearch.bottomAnchor),
-            expansionButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            expansionButton.heightAnchor.constraint(equalToConstant: citySearch.intrinsicContentSize.height),
-            expansionButton.widthAnchor.constraint(equalTo: expansionButton.heightAnchor, multiplier: 1)])
-    }
-    
-    private func setUpVenueSearchConstraints() {
-        view.addSubview(venueSearch)
-        
-        venueSearch.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            venueSearch.topAnchor.constraint(equalTo: view.topAnchor),
-            venueSearch.leadingAnchor.constraint(equalTo: leadingAnchor),
-            venueSearch.trailingAnchor.constraint(equalTo: trailingAnchor),
-        ])
-    }
-    
-    private func setUpCitySearchConstraints() {
-        view.addSubview(citySearch)
-        
-        citySearch.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            citySearch.topAnchor.constraint(equalTo: venueSearch.bottomAnchor),
-            citySearch.leadingAnchor.constraint(equalTo: leadingAnchor),
-            citySearch.trailingAnchor.constraint(equalTo: expansionButton.leadingAnchor)
-        ])
     }
     
     private func setUpMapViewConstraints() {
@@ -119,7 +77,7 @@ class SearchView: UIView {
         mapView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            mapView.topAnchor.constraint(equalTo: view.bottomAnchor),
+            mapView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             mapView.leadingAnchor.constraint(equalTo: leadingAnchor),
             mapView.trailingAnchor.constraint(equalTo: trailingAnchor),
             mapView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
@@ -136,6 +94,43 @@ class SearchView: UIView {
             collectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo:safeAreaLayoutGuide.trailingAnchor),
             collectionView.heightAnchor.constraint(equalToConstant: 100)
+        ])
+    }
+    
+    private func setUpViewConstraints() {
+        addSubview(view)
+        
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            view.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            view.leadingAnchor.constraint(equalTo: leadingAnchor),
+            view.trailingAnchor.constraint(equalTo: trailingAnchor),
+            view.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.2)
+        ])
+    }
+    
+    private func setUpVenueSearchConstraints() {
+        addSubview(venueSearch)
+        
+        venueSearch.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            venueSearch.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
+            venueSearch.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            venueSearch.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+        ])
+    }
+    
+    private func setUpCitySearchConstraints() {
+        addSubview(citySearch)
+        
+        citySearch.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            citySearch.topAnchor.constraint(equalTo: venueSearch.bottomAnchor, constant: 8),
+            citySearch.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            citySearch.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         ])
     }
     
