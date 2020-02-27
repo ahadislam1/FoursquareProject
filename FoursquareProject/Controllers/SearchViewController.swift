@@ -76,6 +76,7 @@ class SearchViewController: UIViewController {
         userTrackingButton = MKUserTrackingButton(frame: CGRect(x: 20, y: 30, width: 40, height: 40))
         searchView.mapView.addSubview(userTrackingButton)
         userTrackingButton.mapView = searchView.mapView
+        searchView.mapView.showsCompass = true
         citySearch = "fresh meadows"
     }
     
@@ -190,7 +191,8 @@ extension SearchViewController: UICollectionViewDataSource {
         if searchView.collectionView.alpha == 0.0 {
             cell.backgroundColor = .clear
         }else {
-            cell.backgroundColor = .white
+            cell.backgroundColor = .black
+            cell.layer.cornerRadius = 10
         }
         cell.configureCell(for: venue)
         return cell

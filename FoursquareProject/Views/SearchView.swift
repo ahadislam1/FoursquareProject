@@ -41,7 +41,7 @@ class SearchView: UIView {
         let button = UIButton()
         button.backgroundColor = .black
         button.layer.cornerRadius = 10
-        button.setImage(UIImage(systemName: "table"), for: .normal)
+        button.setImage(UIImage(systemName: "list.dash"), for: .normal)
         return button
     }()
     

@@ -14,7 +14,6 @@ class SearchCell: UICollectionViewCell {
     public lazy var imageView: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(systemName: "map")
-        image.tintColor = .brown
         return image
     }()
     
