@@ -187,6 +187,11 @@ extension SearchViewController: UICollectionViewDataSource {
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let venueItem = venues[indexPath.row]
+        let detailVC = DetailViewController(dataPersistence, venue: venueItem)
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
     
 }
 
