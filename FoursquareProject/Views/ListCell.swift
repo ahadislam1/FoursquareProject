@@ -14,6 +14,7 @@ class ListCell: UITableViewCell {
         let image = UIImageView()
         image.image = UIImage(systemName: "tray.and.arrow.down")
         image.tintColor = .black
+        image.alpha = 0.8
         image.contentMode = .scaleAspectFit
         return image
     }()
@@ -106,6 +107,7 @@ class ListCell: UITableViewCell {
                         case .success(let image):
                             DispatchQueue.main.async {
                                 self.venueImage.image = image
+                                self.venueImage.alpha = 1.0
                             }
                         }
                     }
