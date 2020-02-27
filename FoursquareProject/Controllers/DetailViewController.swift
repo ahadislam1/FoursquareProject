@@ -35,6 +35,17 @@ class DetailViewController: UIViewController{
     override func viewDidLoad() {
         view.backgroundColor = .systemGroupedBackground
         updateUI(with: venue)
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(pushCreateViewController))
+        
+    }
+    
+    @objc private func pushCreateViewController() {
+        
+        let createCV = CreateViewController()
+        
+        navigationController?.pushViewController(createCV, animated: true)
+        
     }
     
     private func updateUI(with venue: Venue){
