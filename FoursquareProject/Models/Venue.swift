@@ -91,7 +91,7 @@ struct Location: Codable, Equatable {
     let city: String?
     let state: String
     let country: String
-    let formattedAddress: [String]
+    let formattedAddress: [String]?
 
     enum CodingKeys: String, CodingKey {
         case address = "address"

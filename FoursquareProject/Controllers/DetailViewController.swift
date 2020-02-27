@@ -50,14 +50,14 @@ class DetailViewController: UIViewController{
     
     private func updateUI(with venue: Venue){
        getImage(with: venue)
+       
         
         detailView.nameLabel.text = venue.name
         
-        detailView.addressArray0.text = venue.location.formattedAddress[0]
+        detailView.addressArray0.text = venue.location.formattedAddress?[0]
         
-        detailView.addressArray1.text = venue.location.formattedAddress[1]
-        
-        detailView.addressArray2.text = venue.location.formattedAddress[2]
+        detailView.addressArray1.text = venue.location.formattedAddress?[1]
+    
     }
     
     private func getImage(with venue: Venue) {
@@ -65,43 +65,37 @@ class DetailViewController: UIViewController{
         let venueID = venue.id
                let endpointURL = "https://api.foursquare.com/v2/venues/\(venueID)/photos?client_id=\(Secret.appId)&client_secret=\(Secret.appSecret)&v=20200221"
                
-               var photos = [Item]() {
-                   didSet {
-                       print("photo count - \(photos.count)")
-                   }
-               }
+              
                
-               GenericCoderAPI.manager.getJSON(objectType: PhotoWrapper.self, with: endpointURL) { result in
+               GenericCoderAPI.manager.getJSON(objectType: PhotoWrapper.self, with: endpointURL) { [weak self] result in
                    switch result {
                    case .failure(let error):
                        print(error)
                    case .success(let wrapper):
-                       photos = wrapper.response.photos.items
-                   }
-               }
-               
-               guard let item = photos.first else { return }
-               
-               print(" imageUrL = \(item.getImageUrl(imageSize: "400*250"))")
-               
-               detailView.imageView.getImage(with: item.getImageUrl(imageSize: "original"), writeTo: .cachesDirectory) { [weak self] (result) in
-                   switch result {
-                   case .failure:
-                       DispatchQueue.main.async {
-                           self?.detailView.imageView.image = UIImage(named: "buffet")
-                       }
-                   case .success( let image):
+                   let images = wrapper.response.photos.items.map {$0.getImageUrl(imageSize: "original")}
                     
-                           DispatchQueue.main.async {
-                               self?.detailView.imageView.image = image
-                           }
-                       }
-                   }
+                   guard let photo = images.first else { return
+                    
+                    }
+                DispatchQueue.main.async {
+                    self?.detailView.imageView.getImage(with: photo) { (result) in
+                        switch result {
+                        case .failure:
+                            break
+                        case .success(let image):
+                            
+                            DispatchQueue.main.async {
+                                self?.detailView.imageView.image = image
+                            }
+                    }
+                        }
+                  
                }
         
     }
         
-    
-    
+}
+        
+}
 
-
+}
