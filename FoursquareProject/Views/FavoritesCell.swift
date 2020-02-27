@@ -32,6 +32,15 @@ class FavoritesCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        //backgroundColor = .secondarySystemFill
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 0.3
+        layer.shadowOffset = CGSize(width: 2, height: 2)
+        layer.shadowRadius = 10
+    }
+    
     public func configureCell(_ venue: FavoriteVenue) {
         titleLabel.text = venue.title
         getImage(with: venue.venue)
