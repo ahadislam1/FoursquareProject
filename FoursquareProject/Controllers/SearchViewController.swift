@@ -31,6 +31,17 @@ class SearchViewController: UIViewController {
         didSet {
             DispatchQueue.main.async {
                 self.loadMapView()
+                self.searchView.collectionView.reloadData()
+                self.searchView.collectionView.alpha = 1.0
+            }
+        }
+    }
+    
+    private var images = [Item]() {
+        didSet {
+            DispatchQueue.main.async {
+                self.loadView()
+                self.searchView.collectionView.reloadData()
             }
         }
     }
@@ -52,11 +63,13 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = .systemGroupedBackground
         configureSearchView()
         searchView.venueSearch.delegate = self
         searchView.citySearch.delegate = self
         searchView.collectionView.delegate = self
-//        searchView.collectionView.dataSource = self
+        searchView.collectionView.dataSource = self
+        searchView.collectionView.register(SearchCell.self, forCellWithReuseIdentifier: "searchCell")
         searchView.mapView.delegate = self
         searchView.mapView.showsUserLocation = true
         citySearch = "fresh meadows"
@@ -86,7 +99,6 @@ class SearchViewController: UIViewController {
                 print(error)
             case .success(let model):
                 self.venues = model.response.venues
-                
             }
         }
     }
@@ -97,15 +109,13 @@ class SearchViewController: UIViewController {
             case .failure(let error):
                 print("error: \(error)")
             case .success(let coordinate):
-               
                 
                 self?.coordinate = coordinate
                 
                 let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 2000, longitudinalMeters: 2000)
-                
                 self?.searchView.mapView.setRegion(region, animated: true)
             }
-                                                                            
+            
         }
     }
     
@@ -123,8 +133,8 @@ class SearchViewController: UIViewController {
     private func loadMapView() {
         searchView.mapView.showAnnotations(createAnnotations(), animated: true)
     }
-
-
+    
+    
 }
 
 extension SearchViewController: UISearchBarDelegate {
@@ -132,12 +142,12 @@ extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         guard let citySearchText = searchBar.text,
-        !citySearchText.isEmpty else {
-            return
+            !citySearchText.isEmpty else {
+                return
         }
         
         if searchBar == searchView.citySearch {
-        citySearch = citySearchText
+            citySearch = citySearchText
             searchBar.text = ""
         } else if searchBar == searchView.venueSearch {
             if let text = searchBar.text {
@@ -151,20 +161,34 @@ extension SearchViewController: UISearchBarDelegate {
 }
 
 extension SearchViewController: UICollectionViewDelegateFlowLayout {
-    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let itemSpacing: CGFloat = 1
+        let maxWidth = CGFloat(80)
+        let numberOfItems: CGFloat = 1
+        let totalSpace: CGFloat = numberOfItems * itemSpacing
+        let itemWidth: CGFloat = (maxWidth - totalSpace) / numberOfItems
+        
+        return CGSize(width: itemWidth, height: 80)
+    }
+
 }
 
-//extension SearchViewController: UICollectionViewDataSource {
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//
-//    }
-//
-//
-//}
+extension SearchViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return venues.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "searchCell", for: indexPath) as? SearchCell else {
+            fatalError("could not downcast to SearchCell")
+        }
+        let venue = venues[indexPath.row]
+        cell.configureCell(for: venue)
+        return cell
+    }
+    
+    
+}
 
 extension SearchViewController: MKMapViewDelegate {
     

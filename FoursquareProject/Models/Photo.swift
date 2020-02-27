@@ -79,10 +79,10 @@ struct Item: Codable {
 }
 
 extension Item {
-    
-    func getImageUrl(imageSize: String) -> String {
-        self.prefix + "\(imageSize)" + self.suffix
-    }
+   
+  func getImageUrl(imageSize: String) -> String {
+    self.prefix + "\(imageSize)" + self.suffix
+  }
 }
 
 // MARK: - Checkin
