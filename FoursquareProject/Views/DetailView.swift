@@ -32,7 +32,7 @@ class DetailView: UIView {
         stackView.addArrangedSubview(nameLabel)
         stackView.addArrangedSubview(addressArray0)
         stackView.addArrangedSubview(addressArray1)
-        stackView.addArrangedSubview(addressArray2)
+       
         stackView.distribution = .equalSpacing
         stackView.axis = .vertical
         return stackView
@@ -75,15 +75,7 @@ class DetailView: UIView {
        
         return textView
     }()
-    public lazy var addressArray2 : UILabel = {
-        let textView = UILabel()
-        textView.backgroundColor = .systemTeal
-        textView.numberOfLines = 0
-        textView.font = UIFont(name: "Didot", size: 30.0)
-        textView.text = "More Data, Info, & Details"
-       
-        return textView
-    }()
+ 
 
     override init(frame: CGRect) {
         super.init(frame:UIScreen.main.bounds)

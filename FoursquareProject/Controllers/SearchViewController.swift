@@ -60,6 +60,8 @@ class SearchViewController: UIViewController {
         view = searchView
     }
     
+    var placeholderText = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -148,6 +150,8 @@ extension SearchViewController: UISearchBarDelegate {
         
         if searchBar == searchView.citySearch {
             citySearch = citySearchText
+           placeholderText = citySearchText
+            searchBar.placeholder = "Recent city search : \(placeholderText)"
             searchBar.text = ""
         } else if searchBar == searchView.venueSearch {
             if let text = searchBar.text {
