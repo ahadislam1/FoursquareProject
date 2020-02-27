@@ -91,7 +91,7 @@ class SearchViewController: UIViewController {
     
     private func loadData(_ query: String) {
         
-        let endpointURL = "https://api.foursquare.com/v2/venues/search?client_id=\(Secret.appId)&client_secret=\(Secret.appSecret)&v=20200221&ll=\(coordinate.latitude),\(coordinate.longitude)&query=\(query)&radius=2000"
+        let endpointURL = "https://api.foursquare.com/v2/venues/search?client_id=\(Secret.appId)&client_secret=\(Secret.appSecret)&v=20200221&ll=\(coordinate.latitude),\(coordinate.longitude)&query=\(query)&radius=2000&limit=10"
         
         GenericCoderAPI.manager.getJSON(objectType: VenueModel.self, with: endpointURL) { result in
             switch result {
