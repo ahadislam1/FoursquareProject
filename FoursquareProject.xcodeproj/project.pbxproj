@@ -22,6 +22,8 @@
 		0B03594124006BC000C2EA23 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B03594024006BC000C2EA23 /* FavoritesView.swift */; };
 		0B21C80F240193460055EAA3 /* CoreLocationSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B21C80E240193460055EAA3 /* CoreLocationSession.swift */; };
 		0B36DC8224019D500098F8DC /* FavoritesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B36DC8124019D500098F8DC /* FavoritesCell.swift */; };
+		0B8421DA240854B8006BB19E /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8421D9240854B8006BB19E /* EmptyView.swift */; };
+		0B8421DC24086574006BB19E /* UIAlertController+ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8421DB24086574006BB19E /* UIAlertController+ErrorAlert.swift */; };
 		0B8E6902240447EB003D9262 /* FavoriteVenue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8E6901240447EB003D9262 /* FavoriteVenue.swift */; };
 		0B8E690624047AE4003D9262 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8E690524047AE4003D9262 /* ListViewController.swift */; };
 		0B8E690824047B33003D9262 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8E690724047B33003D9262 /* ListView.swift */; };
@@ -64,6 +66,8 @@
 		0B03594024006BC000C2EA23 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		0B21C80E240193460055EAA3 /* CoreLocationSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreLocationSession.swift; sourceTree = "<group>"; };
 		0B36DC8124019D500098F8DC /* FavoritesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCell.swift; sourceTree = "<group>"; };
+		0B8421D9240854B8006BB19E /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
+		0B8421DB24086574006BB19E /* UIAlertController+ErrorAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+ErrorAlert.swift"; sourceTree = "<group>"; };
 		0B8E6901240447EB003D9262 /* FavoriteVenue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteVenue.swift; sourceTree = "<group>"; };
 		0B8E690524047AE4003D9262 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		0B8E690724047B33003D9262 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
@@ -117,6 +121,7 @@
 			children = (
 				0B03591C2400671F00C2EA23 /* Info.plist */,
 				0B0359172400671F00C2EA23 /* Assets.xcassets */,
+				0B8421DD24086579006BB19E /* Extensions */,
 				0B9D74402400768B0027C2F2 /* Services */,
 				0B9D743624006C740027C2F2 /* Views */,
 				0B03593B2400697D00C2EA23 /* Controllers */,
@@ -157,10 +162,19 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		0B8421DD24086579006BB19E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0B8421DB24086574006BB19E /* UIAlertController+ErrorAlert.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		0B9D743624006C740027C2F2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				0B03593C24006BA900C2EA23 /* CreateView.swift */,
+				0B8421D9240854B8006BB19E /* EmptyView.swift */,
 				0B03593E24006BAF00C2EA23 /* DetailView.swift */,
 				0B03594024006BC000C2EA23 /* FavoritesView.swift */,
 				0B36DC8124019D500098F8DC /* FavoritesCell.swift */,
@@ -308,6 +322,7 @@
 			files = (
 				0B03594124006BC000C2EA23 /* FavoritesView.swift in Sources */,
 				0B8E690824047B33003D9262 /* ListView.swift in Sources */,
+				0B8421DA240854B8006BB19E /* EmptyView.swift in Sources */,
 				0B36DC8224019D500098F8DC /* FavoritesCell.swift in Sources */,
 				807D6E7824008C36000D393C /* Secret.swift in Sources */,
 				0BD4BA512405DCC500C9F37F /* Photo.swift in Sources */,
@@ -319,6 +334,7 @@
 				8070E1F82406F0340017273C /* SearchCell.swift in Sources */,
 				0B0359132400671E00C2EA23 /* SearchViewController.swift in Sources */,
 				0B21C80F240193460055EAA3 /* CoreLocationSession.swift in Sources */,
+				0B8421DC24086574006BB19E /* UIAlertController+ErrorAlert.swift in Sources */,
 				0B8E6902240447EB003D9262 /* FavoriteVenue.swift in Sources */,
 				0B03590F2400671E00C2EA23 /* AppDelegate.swift in Sources */,
 				0B0359362400690C00C2EA23 /* FavoritesViewController.swift in Sources */,

@@ -13,6 +13,28 @@ class FavoritesViewController: UIViewController {
     
     private let dataPersistence: DataPersistence<FavoriteVenue>
     private let favoritesView = FavoritesView()
+    private var favoriteVenues = [FavoriteVenue]() {
+        didSet {
+            favoritesView.collectionView.reloadData()
+            if favoriteVenues.isEmpty {
+                favoritesView.collectionView.backgroundView = EmptyView(title: "Saved Categories", message: "You haven't saved any venues yet.")
+            } else {
+                favoritesView.collectionView.backgroundView = nil
+            }
+        }
+    }
+    
+    private var groupedFavoriteVenuesKeys: [String] {
+        Dictionary(grouping: favoriteVenues) { $0.title }
+            .sorted {$0.key < $1.key }
+            .map {$0.key}
+    }
+    
+    private var groupedFavoriteVenues: [[FavoriteVenue]] {
+        Dictionary(grouping: favoriteVenues) { $0.title }
+            .sorted {$0.key < $1.key }
+            .map {$0.value}
+    }
     
     init(_ dataPersistence: DataPersistence<FavoriteVenue>) {
         self.dataPersistence = dataPersistence
@@ -34,6 +56,15 @@ class FavoritesViewController: UIViewController {
         favoritesView.collectionView.delegate = self
         favoritesView.collectionView.dataSource = self
         setupNavigationBar()
+        loadData()
+    }
+    
+    private func loadData() {
+        do {
+            favoriteVenues = try dataPersistence.loadItems()
+        } catch {
+            print(error)
+        }
     }
     
     private func setupNavigationBar() {
@@ -46,18 +77,24 @@ class FavoritesViewController: UIViewController {
 
 extension FavoritesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // TODO: Setup venues
-        navigationController?.pushViewController(ListViewController(dataPersistence, venues: [Venue]()), animated: true)
+        let venues = groupedFavoriteVenues[indexPath.row].map { $0.venue }
+        let vc = ListViewController(dataPersistence, venues: venues)
+        vc.title = groupedFavoriteVenuesKeys[indexPath.row]
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        groupedFavoriteVenues.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "favoritecell", for: indexPath) as? FavoritesCell else {
             return UICollectionViewCell()
         }
+        
+        let venue = groupedFavoriteVenues[indexPath.row][0]
+        cell.configureCell(venue)
+        
 //        cell.layer.cornerRadius = 5
 //        cell.layer.borderWidth = 5
 //        cell.layer.borderColor = UIColor.black.cgColor
@@ -87,10 +124,10 @@ extension FavoritesViewController: UICollectionViewDelegateFlowLayout {
 
 extension FavoritesViewController: DataPersistenceDelegate {
     func didSaveItem<T>(_ persistenceHelper: DataPersistence<T>, item: T) where T : Decodable, T : Encodable, T : Equatable {
-        
+        loadData()
     }
     
     func didDeleteItem<T>(_ persistenceHelper: DataPersistence<T>, item: T) where T : Decodable, T : Encodable, T : Equatable {
-        
+        loadData()
     }
 }

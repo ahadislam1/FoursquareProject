@@ -31,6 +31,42 @@ class FavoritesCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    public func configureCell(_ venue: FavoriteVenue) {
+        titleLabel.text = venue.title
+        getImage(with: venue.venue)
+    }
+    
+    private func getImage(with venue: Venue) {
+        
+        let endpointURL = "https://api.foursquare.com/v2/venues/\(venue.id)/photos?client_id=\(Secret.appId)&client_secret=\(Secret.appSecret)&v=20200221"
+        
+        var photos = [Item]()
+        
+        GenericCoderAPI.manager.getJSON(objectType: PhotoWrapper.self, with: endpointURL) { result in
+            switch result {
+            case .failure(let error):
+                print(error)
+            case .success(let wrapper):
+                photos = wrapper.response.photos.items
+            }
+        }
+        
+        guard let item = photos.first else { return }
+        
+        imageView.getImage(with: item.getImageUrl(imageSize: "200x200"), writeTo: .cachesDirectory) { [weak self] (result) in
+            switch result {
+            case .failure:
+                DispatchQueue.main.async {
+                    self?.imageView.image = UIImage(systemName: "photo")
+                }
+            case .success( let image):
+                DispatchQueue.main.async {
+                    self?.imageView.image = image
+                }
+            }
+        }
+    }
+    
     private func commonInit() {
         setupImageView()
         setupTitleLabel()
