@@ -205,8 +205,10 @@ extension SearchViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        navigationController?.navigationBar.isHidden = false
         let venueItem = venues[indexPath.row]
         let detailVC = DetailViewController(dataPersistence, venue: venueItem)
+        detailVC.navigationItem.title = venueItem.name
         navigationController?.pushViewController(detailVC, animated: true)
     }
     

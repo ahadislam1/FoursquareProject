@@ -52,9 +52,9 @@ class ListViewController: UIViewController {
 extension ListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
          let restaurant = venues[indexPath.row]
+        navigationItem.title = restaurant.name
         navigationController?.pushViewController(DetailViewController(dataPersistence, venue: restaurant), animated: true)
       
-        
         print(restaurant.location.formattedAddress?.description ?? "No address")
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -62,8 +62,11 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = venues[indexPath.row].name
+        let cell = tableView.dequeueReusableCell(withIdentifier: "listCell", for: indexPath)
+        
+        let venue = venues[indexPath.row]
+        //configure cell
+        
         return cell
     }
     
