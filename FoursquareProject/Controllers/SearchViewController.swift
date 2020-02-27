@@ -89,7 +89,9 @@ class SearchViewController: UIViewController {
     }
     
     @objc private func buttonPressed() {
-        navigationController?.pushViewController(ListViewController(dataPersistence, venues: venues), animated: true)
+        let vc = ListViewController(dataPersistence, venues: venues)
+        vc.title = searchView.venueSearch.text ?? "Title"
+        navigationController?.pushViewController( vc, animated: true)
     }
     
     private func configureSearchView() {

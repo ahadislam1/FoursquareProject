@@ -42,7 +42,7 @@ class DetailViewController: UIViewController{
     
     @objc private func pushCreateViewController() {
         
-        let createCV = CreateViewController()
+        let createCV = CreateViewController(dataPersistence: dataPersistence, venue: venue)
         
         navigationController?.pushViewController(createCV, animated: true)
         
