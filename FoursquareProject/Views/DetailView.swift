@@ -29,56 +29,57 @@ class DetailView: UIView {
         let stackView = UIStackView()
         
         stackView.alignment = .center
-        stackView.addArrangedSubview(label)
-        stackView.addArrangedSubview(label2)
-        stackView.addArrangedSubview(label3)
-        stackView.addArrangedSubview(label4)
+        stackView.addArrangedSubview(nameLabel)
+        stackView.addArrangedSubview(addressArray0)
+        stackView.addArrangedSubview(addressArray1)
+        stackView.addArrangedSubview(addressArray2)
         stackView.distribution = .equalSpacing
         stackView.axis = .vertical
         return stackView
     }()
     
-    private lazy var imageView : UIImageView = {
+    public lazy var imageView : UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "circle")
+        imageView.image = UIImage(named: "buffet")
         imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
 
         return imageView
         
     }()
     
-    private lazy var label : UILabel = {
+    public lazy var nameLabel : UILabel = {
         let textView = UILabel()
-        textView.backgroundColor = .systemGroupedBackground
+         textView.backgroundColor = .systemTeal
         textView.numberOfLines = 0
         textView.font = UIFont(name: "Didot", size: 40.0)
         textView.text = " Details Details Details"
        
         return textView
     }()
-    private lazy var label2 : UILabel = {
+    public lazy var addressArray0 : UILabel = {
         let textView = UILabel()
-        textView.backgroundColor = .systemGroupedBackground
+         textView.backgroundColor = .systemTeal
         textView.numberOfLines = 0
-        textView.font = UIFont(name: "Didot", size: 40.0)
+        textView.font = UIFont(name: "Didot", size: 30.0)
         textView.text = "Info Info Info"
        
         return textView
     }()
-    private lazy var label3 : UILabel = {
+    public lazy var addressArray1 : UILabel = {
         let textView = UILabel()
-        textView.backgroundColor = .systemGroupedBackground
+        textView.backgroundColor = .systemTeal
         textView.numberOfLines = 0
-        textView.font = UIFont(name: "Didot", size: 40.0)
+        textView.font = UIFont(name: "Didot", size: 30.0)
         textView.text = "Data Data Data"
        
         return textView
     }()
-    private lazy var label4 : UILabel = {
+    public lazy var addressArray2 : UILabel = {
         let textView = UILabel()
-        textView.backgroundColor = .systemGroupedBackground
+        textView.backgroundColor = .systemTeal
         textView.numberOfLines = 0
-        textView.font = UIFont(name: "Didot", size: 40.0)
+        textView.font = UIFont(name: "Didot", size: 30.0)
         textView.text = "More Data, Info, & Details"
        
         return textView
@@ -144,12 +145,11 @@ class DetailView: UIView {
         
         NSLayoutConstraint.activate([
         
-            imageView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 100.0),
+            imageView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 10.0),
             imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            imageView.heightAnchor.constraint(equalTo: scrollView.heightAnchor, multiplier: 0.8)
+            imageView.heightAnchor.constraint(equalTo: scrollView.heightAnchor, multiplier: 0.5)
             
-        
         
         ])
         
