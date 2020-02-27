@@ -47,7 +47,7 @@ class SearchView: UIView {
       let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
       let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-      cv.backgroundColor = .systemGroupedBackground
+        cv.backgroundColor = .clear
     cv.alpha = 0.0
       return cv
     }()
