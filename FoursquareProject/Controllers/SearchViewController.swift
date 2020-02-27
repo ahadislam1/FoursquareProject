@@ -15,6 +15,7 @@ class SearchViewController: UIViewController {
     private let searchView = SearchView()
     private let dataPersistence: DataPersistence<FavoriteVenue>
     private var locationSession = CoreLocationSession()
+    private var userTrackingButton: MKUserTrackingButton!
     private var coordinate = CLLocationCoordinate2DMake(40.739658, -73.7901582) {
         didSet {
             print(coordinate)
@@ -74,6 +75,10 @@ class SearchViewController: UIViewController {
         searchView.collectionView.register(SearchCell.self, forCellWithReuseIdentifier: "searchCell")
         searchView.mapView.delegate = self
         searchView.mapView.showsUserLocation = true
+        userTrackingButton = MKUserTrackingButton(frame: CGRect(x: 20, y: 30, width: 40, height: 40))
+        searchView.mapView.addSubview(userTrackingButton)
+        userTrackingButton.mapView = searchView.mapView
+        searchView.mapView.showsCompass = true
         citySearch = "fresh meadows"
     }
     
@@ -187,6 +192,12 @@ extension SearchViewController: UICollectionViewDataSource {
             fatalError("could not downcast to SearchCell")
         }
         let venue = venues[indexPath.row]
+        if searchView.collectionView.alpha == 0.0 {
+            cell.backgroundColor = .clear
+        }else {
+            cell.backgroundColor = .black
+            cell.layer.cornerRadius = 10
+        }
         cell.configureCell(for: venue)
         return cell
     }
