@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 class DetailView: UIView {
 
@@ -40,9 +41,13 @@ class DetailView: UIView {
     
     public lazy var imageView : UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "buffet")
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
+        imageView.image = UIImage(named: "food")
+        imageView.layer.borderWidth = 10
+        imageView.layer.borderColor = CGColor(srgbRed: 0, green: 0, blue: 0, alpha: 1)
+        imageView.contentMode = .scaleAspectFit
+       
+        imageView.layer.cornerRadius = 20
+          imageView.clipsToBounds = true
 
         return imageView
         
@@ -52,7 +57,8 @@ class DetailView: UIView {
         let textView = UILabel()
          textView.backgroundColor = .systemTeal
         textView.numberOfLines = 0
-        textView.font = UIFont(name: "Didot", size: 40.0)
+        textView.textAlignment = .center
+        textView.font = UIFont(name: "Didot", size: 45.0)
         textView.text = " Details Details Details"
        
         return textView
@@ -60,6 +66,7 @@ class DetailView: UIView {
     public lazy var addressArray0 : UILabel = {
         let textView = UILabel()
          textView.backgroundColor = .systemTeal
+        textView.textAlignment = .center
         textView.numberOfLines = 0
         textView.font = UIFont(name: "Didot", size: 30.0)
         textView.text = "Info Info Info"
@@ -70,10 +77,30 @@ class DetailView: UIView {
         let textView = UILabel()
         textView.backgroundColor = .systemTeal
         textView.numberOfLines = 0
+        textView.textAlignment = .center
         textView.font = UIFont(name: "Didot", size: 30.0)
         textView.text = "Data Data Data"
        
         return textView
+    }()
+    
+    public lazy var mapView : MKMapView = {
+        let mapView = MKMapView()
+        mapView.layer.borderWidth = 10
+        mapView.layer.borderColor = CGColor(srgbRed: 0, green: 0, blue: 0, alpha: 1)
+        
+        return mapView
+    }()
+    
+    public lazy var directionsButton : UIButton = {
+        let button = UIButton()
+        button.setTitle("Get Directions", for: .normal)
+        
+        button.backgroundColor = .black
+        
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont(name: "Didot", size: 20.0)
+        return button
     }()
  
 
@@ -94,10 +121,6 @@ class DetailView: UIView {
 }
 
     func setUpScrollViewConstraints() {
-        
-       
-        
-
         addSubview(scrollView)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -110,7 +133,8 @@ class DetailView: UIView {
         
         setUpImageView()
         setUpStackView()
-        
+        setUpMapView()
+        setUpDirectionsButton()
     }
     
     
@@ -124,7 +148,7 @@ class DetailView: UIView {
             stackView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 100),
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            stackView.heightAnchor.constraint(equalTo: scrollView.heightAnchor, multiplier: 0.6)
+            stackView.heightAnchor.constraint(equalTo: scrollView.heightAnchor, multiplier: 0.4)
 
 
         ])
@@ -143,6 +167,40 @@ class DetailView: UIView {
             imageView.heightAnchor.constraint(equalTo: scrollView.heightAnchor, multiplier: 0.5)
             
         
+        ])
+        
+    }
+    
+    func setUpMapView() {
+        scrollView.addSubview(mapView)
+        
+        mapView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+        
+            mapView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 30),
+            mapView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            mapView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            mapView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.6)
+        
+        
+        
+        ])
+    }
+    
+    private func setUpDirectionsButton() {
+        
+        scrollView.addSubview(directionsButton)
+        directionsButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+        
+            directionsButton.topAnchor.constraint(equalTo: mapView.bottomAnchor, constant: 50),
+            directionsButton.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.1),
+            directionsButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 100),
+            directionsButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -100)
+            
+            
         ])
         
     }
