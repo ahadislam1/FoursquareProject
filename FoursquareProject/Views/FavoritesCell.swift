@@ -43,6 +43,7 @@ class FavoritesCell: UICollectionViewCell {
     
     public func configureCell(_ venue: FavoriteVenue) {
         titleLabel.text = venue.title
+        imageView.layer.cornerRadius = 5
         getImage(with: venue.venue)
     }
     

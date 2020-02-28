@@ -55,7 +55,7 @@ class SearchCell: UICollectionViewCell {
                 let images = photo.response.photos.items.map {$0.getImageUrl(imageSize: "300x300")}
                 guard let singleImage = images.first else { return }
                 DispatchQueue.main.async {
-                    self.imageView.getImage(with: singleImage) { (result) in
+                    self.imageView.getImage(with: singleImage, writeTo: .cachesDirectory) { (result) in
                         
                         switch result {
                         case .failure:
