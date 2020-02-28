@@ -99,7 +99,7 @@ class ListCell: UITableViewCell {
                 let images = photo.response.photos.items.map {$0.getImageUrl(imageSize: "300x300")}
                 guard let singleImage = images.first else { return }
                 DispatchQueue.main.async {
-                    self.venueImage.getImage(with: singleImage) { (result) in
+                    self.venueImage.getImage(with: singleImage, writeTo: .cachesDirectory) { (result) in
                         
                         switch result {
                         case .failure:
