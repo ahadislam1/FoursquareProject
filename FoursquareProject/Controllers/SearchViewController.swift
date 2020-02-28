@@ -215,6 +215,44 @@ extension SearchViewController: UICollectionViewDataSource {
 }
 
 extension SearchViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        
+        guard let annotation = view.annotation else { return }
+        
+        
+        
+            let request = MKDirections.Request()
+           
+            request.source = MKMapItem.forCurrentLocation()
+        request.destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude:annotation.coordinate.latitude, longitude: annotation.coordinate.longitude), addressDictionary: nil))
+                request.requestsAlternateRoutes = false
+        request.transportType = .automobile
+
+                let directions = MKDirections(request: request)
+        
+          
+
+        let overlays = mapView.overlays
+        mapView.removeOverlays(overlays)
     
-}
+                directions.calculate { [unowned self] response, error in
+                    guard let unwrappedResponse = response else { return }
+                    
+                    guard  let firstRoute = unwrappedResponse.routes.first else {return}
+    
+                        self.searchView.mapView.addOverlay(firstRoute.polyline)
+                    self.searchView.mapView.setVisibleMapRect(firstRoute.polyline.boundingMapRect, animated: true)
+                   
+            }
+    }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let renderer = MKPolylineRenderer(polyline: overlay as! MKPolyline)
+        renderer.strokeColor = UIColor.blue
+        return renderer
+    }
+    
+    }
+    
+
 
