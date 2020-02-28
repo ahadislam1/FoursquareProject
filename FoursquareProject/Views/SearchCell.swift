@@ -11,6 +11,23 @@ import ImageKit
 
 class SearchCell: UICollectionViewCell {
     
+    private lazy var longPressGesture: UILongPressGestureRecognizer = {
+       let gesture = UILongPressGestureRecognizer()
+        gesture.addTarget(self, action: #selector(longPressActivated(_:)))
+        return gesture
+    }()
+    
+    @objc private func longPressActivated(_ sender: UILongPressGestureRecognizer) {
+        print("Longpress")
+        if sender.minimumPressDuration == 0.2 {
+            //.detailView.isHidden = false
+            print("shown")
+        } else {
+            //searchView.detailView.isHidden = true
+            print("hidden")
+        }
+    }
+    
     public lazy var imageView: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(systemName: "map")
@@ -28,6 +45,7 @@ class SearchCell: UICollectionViewCell {
     }
     
     private func commonInit() {
+        addGestureRecognizer(longPressGesture)
         setUpImageViewConstraints()
     }
     

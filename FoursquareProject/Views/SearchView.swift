@@ -16,6 +16,12 @@ class SearchView: UIView {
         return view
     }()
     
+    public lazy var detailView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black
+        return view
+    }()
+    
     public lazy var venueSearch: UISearchBar = {
         let search = UISearchBar()
         search.placeholder = "Enter a search term.."
@@ -72,6 +78,7 @@ class SearchView: UIView {
         setUpExansionButtonConstraints()
         setUpVenueSearchConstraints()
         setUpCitySearchConstraints()
+        setUpDetailViewConstraints()
     }
     
     private func setUpMapViewConstraints() {
@@ -147,6 +154,19 @@ class SearchView: UIView {
             citySearch.topAnchor.constraint(equalTo: venueSearch.bottomAnchor),
             citySearch.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             citySearch.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+        ])
+    }
+    
+    private func setUpDetailViewConstraints() {
+        view.addSubview(detailView)
+        
+        detailView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            detailView.topAnchor.constraint(equalTo: citySearch.bottomAnchor, constant: 8),
+            detailView.leadingAnchor.constraint(equalTo: citySearch.leadingAnchor),
+            detailView.trailingAnchor.constraint(equalTo: citySearch.trailingAnchor),
+            detailView.bottomAnchor.constraint(equalTo: collectionView.topAnchor, constant: 8)
         ])
     }
     

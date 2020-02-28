@@ -16,6 +16,7 @@ class SearchViewController: UIViewController {
     private let dataPersistence: DataPersistence<FavoriteVenue>
     private var locationSession = CoreLocationSession()
     private var userTrackingButton: MKUserTrackingButton!
+    
     private var coordinate = CLLocationCoordinate2DMake(40.739658, -73.7901582) {
         didSet {
             print(coordinate)
@@ -66,6 +67,7 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        searchView.detailView.isHidden = true
         view.backgroundColor = .systemGroupedBackground
         configureSearchView()
         searchView.venueSearch.delegate = self
@@ -143,7 +145,6 @@ class SearchViewController: UIViewController {
         searchView.mapView.showAnnotations(createAnnotations(), animated: true)
     }
     
-    
 }
 
 extension SearchViewController: UISearchBarDelegate {
@@ -166,7 +167,6 @@ extension SearchViewController: UISearchBarDelegate {
                 loadData(query)
             }
         }
-        
     }
     
 }
@@ -209,9 +209,9 @@ extension SearchViewController: UICollectionViewDataSource {
         let venueItem = venues[indexPath.row]
         let detailVC = DetailViewController(dataPersistence, venue: venueItem)
         detailVC.navigationItem.title = venueItem.name
-        navigationController?.pushViewController(detailVC, animated: true)
+         navigationController?.pushViewController(detailVC, animated: true)
     }
-    
+
 }
 
 extension SearchViewController: MKMapViewDelegate {
