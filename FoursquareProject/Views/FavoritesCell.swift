@@ -64,7 +64,7 @@ class FavoritesCell: UICollectionViewCell {
         
         guard let item = photos.first else { return }
         
-        imageView.getImage(with: item.getImageUrl(imageSize: "200x200"), writeTo: .cachesDirectory) { [weak self] (result) in
+        imageView.getImage(with: item.getImageUrl(imageSize: "300x300"), writeTo: .cachesDirectory) { [weak self] (result) in
             switch result {
             case .failure:
                 DispatchQueue.main.async {
