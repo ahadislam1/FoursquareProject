@@ -36,6 +36,9 @@ class DetailViewController: UIViewController{
     override func viewDidLoad() {
         view.backgroundColor = .systemGroupedBackground
         updateUI(with: venue)
+        detailView.mapView.delegate = self
+        
+        detailView.directionsButton.addTarget(self, action: #selector(getWalkingDirections), for: .touchUpInside)
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(pushCreateViewController))
         
@@ -118,5 +121,46 @@ class DetailViewController: UIViewController{
         }
         
     }
+    
+  
+    
+   @objc private func getWalkingDirections() {
+        
+        detailView.mapView.isUserInteractionEnabled = true
+        
+        let request = MKDirections.Request()
+        
+        request.source = MKMapItem.forCurrentLocation()
+        request.destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude:venue.location.lat, longitude: venue.location.lng), addressDictionary: nil))
+            request.requestsAlternateRoutes = true
+    request.transportType = .automobile
+
+            let directions = MKDirections(request: request)
+    
+    let overlays = detailView.mapView.overlays
+    detailView.mapView.removeOverlays(overlays)
+
+            directions.calculate { [unowned self] response, error in
+                guard let unwrappedResponse = response else { return }
+
+                for route in unwrappedResponse.routes {
+                    self.detailView.mapView.addOverlay(route.polyline)
+                    self.detailView.mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
+                }
+            }
+        }
+    }
+    
+
+
+extension DetailViewController: MKMapViewDelegate {
+    
+func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+    let renderer = MKPolylineRenderer(polyline: overlay as! MKPolyline)
+    renderer.strokeColor = UIColor.blue
+    return renderer
+}
+    
+
     
 }

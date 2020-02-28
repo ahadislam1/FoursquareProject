@@ -12,17 +12,18 @@ class ListCell: UITableViewCell {
     
     public lazy var venueImage: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(systemName: "tray.and.arrow.down")
+        image.image = UIImage(named: "food")
         image.tintColor = .black
         image.alpha = 0.8
-        image.contentMode = .scaleAspectFit
+        image.contentMode = .scaleAspectFill
+        image.clipsToBounds = true
         return image
     }()
     
     private lazy var view: UIView = {
         let view = UIView()
         view.backgroundColor = .black
-        view.alpha = 0.5
+        view.alpha = 0.8
         return view
     }()
     
@@ -107,6 +108,9 @@ class ListCell: UITableViewCell {
                         case .success(let image):
                             DispatchQueue.main.async {
                                 self.venueImage.image = image
+                                self.view.alpha = 0.4
+                               
+                                self.venueName.alpha = 1.0
                                 self.venueImage.alpha = 1.0
                             }
                         }

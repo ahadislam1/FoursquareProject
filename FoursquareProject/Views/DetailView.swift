@@ -42,9 +42,9 @@ class DetailView: UIView {
     public lazy var imageView : UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "food")
-        imageView.layer.borderWidth = 10
+        imageView.layer.borderWidth = 3
         imageView.layer.borderColor = CGColor(srgbRed: 0, green: 0, blue: 0, alpha: 1)
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
        
         imageView.layer.cornerRadius = 20
           imageView.clipsToBounds = true
@@ -88,7 +88,8 @@ class DetailView: UIView {
         let mapView = MKMapView()
         mapView.layer.borderWidth = 10
         mapView.layer.borderColor = CGColor(srgbRed: 0, green: 0, blue: 0, alpha: 1)
-        
+        mapView.isUserInteractionEnabled = false
+        mapView.showsUserLocation = true
         return mapView
     }()
     
@@ -195,7 +196,7 @@ class DetailView: UIView {
         
         NSLayoutConstraint.activate([
         
-            directionsButton.topAnchor.constraint(equalTo: mapView.bottomAnchor, constant: 50),
+            directionsButton.topAnchor.constraint(equalTo: mapView.bottomAnchor, constant: 100),
             directionsButton.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.1),
             directionsButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 100),
             directionsButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -100)
