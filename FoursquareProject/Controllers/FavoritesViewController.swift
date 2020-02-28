@@ -42,7 +42,8 @@ class FavoritesViewController: UIViewController {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        self.dataPersistence = DataPersistence<FavoriteVenue>(filename: "favorites.plist")
+        super.init(coder: coder)
     }
     
     override func loadView() {
@@ -56,6 +57,10 @@ class FavoritesViewController: UIViewController {
         favoritesView.collectionView.delegate = self
         favoritesView.collectionView.dataSource = self
         setupNavigationBar()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         loadData()
     }
     

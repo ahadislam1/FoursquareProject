@@ -1,0 +1,16 @@
+PODS:
+  - CircleBar (0.8.2)
+
+DEPENDENCIES:
+  - CircleBar
+
+SPEC REPOS:
+  trunk:
+    - CircleBar
+
+SPEC CHECKSUMS:
+  CircleBar: 8e17d2090e6e319b518010535a3145fb8fd68c22
+
+PODFILE CHECKSUM: 90a5b1be819f82cec8905cc96c1e16520d0406ac
+
+COCOAPODS: 1.9.0

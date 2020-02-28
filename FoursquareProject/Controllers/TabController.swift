@@ -8,6 +8,7 @@
 
 import UIKit
 import DataPersistence
+import CircleBar
 
 class TabController: UITabBarController {
     
