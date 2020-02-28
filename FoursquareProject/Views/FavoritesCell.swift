@@ -42,7 +42,6 @@ class FavoritesCell: UICollectionViewCell {
         layer.shadowOffset = .zero
         layer.shadowRadius = 10
         layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
-        clipsToBounds = true
     }
     
     public func configureCell(_ venue: FavoriteVenue) {
