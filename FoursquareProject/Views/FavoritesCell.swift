@@ -20,6 +20,7 @@ class FavoritesCell: UICollectionViewCell {
         let l = UILabel()
         l.text = "Category"
         l.font = UIFont.preferredFont(forTextStyle: .headline)
+        l.font = l.font.withSize(25)
         return l
     }()
     
@@ -34,11 +35,14 @@ class FavoritesCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        //backgroundColor = .secondarySystemFill
+        backgroundColor = .white
+        layer.cornerRadius = 20
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.3
-        layer.shadowOffset = CGSize(width: 2, height: 2)
+        layer.shadowOffset = .zero
         layer.shadowRadius = 10
+        layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
+        clipsToBounds = true
     }
     
     public func configureCell(_ venue: FavoriteVenue) {

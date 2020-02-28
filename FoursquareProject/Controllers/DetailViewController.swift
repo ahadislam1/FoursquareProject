@@ -102,7 +102,7 @@ class DetailViewController: UIViewController{
                     
                 }
                 DispatchQueue.main.async {
-                    self?.detailView.imageView.getImage(with: photo) { (result) in
+                    self?.detailView.imageView.getImage(with: photo, writeTo: .cachesDirectory) { (result) in
                         switch result {
                         case .failure:
                             break

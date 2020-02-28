@@ -172,7 +172,7 @@ extension CreateViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        UIEdgeInsets(top: 20, left: 5, bottom: 20, right: 5)
+        UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
     }
 }
 
