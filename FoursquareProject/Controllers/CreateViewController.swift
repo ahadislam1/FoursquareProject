@@ -85,7 +85,7 @@ class CreateViewController: UIViewController {
             do {
                 try dataPersistence.deleteItem(at: x)
                 loadData()
-                navigationController?.popViewController(animated: true)
+                successOnCreation(str: "Item was successfully deleted.")
             } catch {
                 let alertvc = UIAlertController.errorAlert("Error deleting venue: \(error.localizedDescription)")
                 self.present(alertvc, animated: true)
@@ -99,7 +99,7 @@ class CreateViewController: UIViewController {
         let favoriteVenue = FavoriteVenue(venue: venue, title: title)
         do {
             try dataPersistence.createItem(favoriteVenue)
-            navigationController?.popViewController(animated: true)
+            successOnCreation(str: "Venue was saved.")
         } catch {
             let alertvc = UIAlertController.errorAlert("\(error.localizedDescription)")
             present(alertvc, animated: true, completion: nil)
@@ -127,12 +127,26 @@ class CreateViewController: UIViewController {
         navigationItem.setRightBarButton(createButton, animated: true)
     }
     
+    private func successOnCreation(str: String) {
+        let alertvc = UIAlertController(title: "Success", message: str, preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .default) { _ in
+            self.navigationController?.popViewController(animated: true)
+        }
+        alertvc.addAction(alertAction)
+        present(alertvc, animated: true)
+    }
     
 }
 
 extension CreateViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let title = groupedFavoriteVenuesKeys[indexPath.row]
+        let venues = favoriteVenues.map{$0.venue}
+        guard !venues.contains(venue) else {
+            let alertvc = UIAlertController.errorAlert("Venue already exists.")
+            present(alertvc, animated: true)
+            return
+        }
         createFavoriteVenue(title, venue: venue)
     }
     

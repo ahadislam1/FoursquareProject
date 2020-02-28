@@ -11,7 +11,7 @@ import DataPersistence
 
 class TabController: UITabBarController {
     
-    private let dataPersistence = DataPersistence<FavoriteVenue>(filename: "favorites.plist")
+    public let dataPersistence = DataPersistence<FavoriteVenue>(filename: "favorites.plist")
     
     private lazy var searchVC: UINavigationController = {
         let vc = SearchViewController(dataPersistence)

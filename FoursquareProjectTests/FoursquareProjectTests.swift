@@ -12,6 +12,18 @@ import DataPersistence
 
 class FoursquareProjectTests: XCTestCase {
     
+    func testDeleteAll() {
+        let dataPersistence = TabController().dataPersistence
+        dataPersistence.removeAll()
+        var favorites = [FavoriteVenue]()
+        do {
+            favorites = try dataPersistence.loadItems()
+            XCTAssertEqual(favorites.count, 0)
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
+    }
+    
     func testModel() {
         var venues = [Venue]()
         let endpointURL = "https://api.foursquare.com/v2/venues/search?client_id=\(Secret.appId)&client_secret=\(Secret.appSecret)&v=20200221&ll=40.735,-73.78"
