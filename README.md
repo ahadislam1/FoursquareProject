@@ -27,6 +27,11 @@ While working on the directions, we noticed that everytime an anotation was sele
 
 ## Gifs 
 
+![detailView](https://user-images.githubusercontent.com/55755297/75726533-990d3300-5cb0-11ea-85cf-8b4ccf80389b.gif)
+
+![saveFromDetail](https://user-images.githubusercontent.com/55755297/75726503-8abf1700-5cb0-11ea-803c-58ef076561b8.gif)
+
+![finalView](https://user-images.githubusercontent.com/55755297/75726478-7ed35500-5cb0-11ea-89c1-f59a106be665.gif)
 
 ## Collaboraters
 
