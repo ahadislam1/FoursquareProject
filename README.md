@@ -8,4 +8,4 @@ App allows the user to browse venues located worldwide via the Foursquare API. T
 
 Users can save venues to user-specified collections.  They can create new collections or add to existing ones.  Users can delete selected venues from collections as well.
 
-<img width="343" alt="Screen Shot 2020-03-02 at 5 03 56 PM" src="https://user-images.githubusercontent.com/55721710/75722240-d4573400-5ca7-11ea-8747-0a0d0c06bfb0.png"> <img width="341" alt="Screen Shot 2020-03-02 at 5 10 47 PM" src="https://user-images.githubusercontent.com/55721710/75722725-c7871000-5ca8-11ea-817b-7678b67d171d.png">
+<img width="343" alt="Screen Shot 2020-03-02 at 5 03 56 PM" src="https://user-images.githubusercontent.com/55721710/75722240-d4573400-5ca7-11ea-8747-0a0d0c06bfb0.png"> <img width="343" alt="Screen Shot 2020-03-02 at 5 10 47 PM" src="https://user-images.githubusercontent.com/55721710/75722725-c7871000-5ca8-11ea-817b-7678b67d171d.png">
