@@ -10,7 +10,10 @@ Users can save venues to user-specified collections.  They can create new collec
 
 <img width="343" alt="Screen Shot 2020-03-02 at 5 03 56 PM" src="https://user-images.githubusercontent.com/55721710/75722240-d4573400-5ca7-11ea-8747-0a0d0c06bfb0.png"> <img width="343" alt="Screen Shot 2020-03-02 at 5 10 47 PM" src="https://user-images.githubusercontent.com/55721710/75722725-c7871000-5ca8-11ea-817b-7678b67d171d.png">
 
-## Code Challenge - 
+## Code Challenge
 
 As part of the "extra credit", we wanted to add directions from our current location to our destination. In order to do so, we needed to inplement the code below.
 
+<img width="1037" alt="Screen Shot 2020-03-02 at 5 24 14 PM" src="https://user-images.githubusercontent.com/55755297/75723981-67459d80-5cab-11ea-995f-ff2b1596a5d7.png">
+
+<img width="1075" alt="Screen Shot 2020-03-02 at 5 26 12 PM" src="https://user-images.githubusercontent.com/55755297/75724011-6f9dd880-5cab-11ea-9c01-494ae5a38001.png">
