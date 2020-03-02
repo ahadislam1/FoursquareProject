@@ -91,7 +91,7 @@ class ListCell: UITableViewCell {
     public func configureCell(for venue: Venue) {
         venueName.text = venue.name
         
-        GenericCoderAPI.manager.getJSON(objectType: PhotoWrapper.self, with: "https://api.foursquare.com/v2/venues/\(venue.id)/photos?client_id=\(Secret.appId)&client_secret=\(Secret.appSecret)&v=20200221") { (result) in
+        GenericCoderAPI.manager.getJSON(objectType: PhotoWrapper.self, with: "https://api.foursquare.com/v2/venues/\(venue.id)/photos?client_id=\(Secret.appId)&client_secret=\(Secret.appSecret)&v=20200221") { [unowned self] (result) in
             
             switch result {
             case .failure(let appError):
@@ -100,7 +100,7 @@ class ListCell: UITableViewCell {
                 let images = photo.response.photos.items.map {$0.getImageUrl(imageSize: "300x300")}
                 guard let singleImage = images.first else { return }
                 DispatchQueue.main.async {
-                    self.venueImage.getImage(with: singleImage, writeTo: .cachesDirectory) { (result) in
+                    self.venueImage.getImage(with: singleImage, writeTo: .cachesDirectory) {[unowned self] (result) in
                         
                         switch result {
                         case .failure:

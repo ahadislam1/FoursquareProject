@@ -46,7 +46,7 @@ class SearchCell: UICollectionViewCell {
     
     public func configureCell(for venue: Venue) {
         
-        GenericCoderAPI.manager.getJSON(objectType: PhotoWrapper.self, with: "https://api.foursquare.com/v2/venues/\(venue.id)/photos?client_id=\(Secret.appId)&client_secret=\(Secret.appSecret)&v=20200221") { (result) in
+        GenericCoderAPI.manager.getJSON(objectType: PhotoWrapper.self, with: "https://api.foursquare.com/v2/venues/\(venue.id)/photos?client_id=\(Secret.appId)&client_secret=\(Secret.appSecret)&v=20200221") { [unowned self] (result) in
             
             switch result {
             case .failure(let appError):
@@ -55,7 +55,7 @@ class SearchCell: UICollectionViewCell {
                 let images = photo.response.photos.items.map {$0.getImageUrl(imageSize: "300x300")}
                 guard let singleImage = images.first else { return }
                 DispatchQueue.main.async {
-                    self.imageView.getImage(with: singleImage, writeTo: .cachesDirectory) { (result) in
+                    self.imageView.getImage(with: singleImage, writeTo: .cachesDirectory) { [unowned self] (result) in
                         
                         switch result {
                         case .failure:
