@@ -22,6 +22,6 @@ Without the delegate we wouldnt be able to see the "overlay" which is, in simple
 
 ### Small Wins! 
 
-While working on the directions, we noticed that everytime an anotation was selected or directions requested the "overlays"  would lay over eachother. (no pun intended). This bug would cause small errors and crashes. in order to solve that problem we used the code below which would refresh the map each time. 
-<img width="595" alt="Screen Shot 2020-03-02 at 5 43 03 PM" src="https://user-images.githubusercontent.com/55755297/75724904-57c75400-5cad-11ea-9076-5a99e46d38a9.png">
+While working on the directions, we noticed that everytime an anotation was selected or directions requested the "overlays"  would lay over eachother. (no pun intended). This bug would cause small errors and crashes. In order to solve that problem we used the code below which would refresh the map each time. 
+<img width="560" alt="Screen Shot 2020-03-02 at 5 44 39 PM" src="https://user-images.githubusercontent.com/55755297/75724988-88a78900-5cad-11ea-9521-992ead008527.png">
 
