@@ -14,7 +14,12 @@ Users can save venues to user-specified collections.  They can create new collec
 
 As part of the "extra credit", we wanted to add directions from our current location to our destination. In order to do so, we needed to inplement the code below.
 
-
+<img width="500" alt="Screen Shot 2020-03-02 at 5 24 14 PM" src="https://user-images.githubusercontent.com/55755297/75724523-93ade980-5cac-11ea-860a-a81bd454c0a3.png">
 
 Without the delegate we wouldnt be able to see the "overlay" which is, in simplest terms. the line from pooint A to point B.
+
 <img width="1075" alt="Screen Shot 2020-03-02 at 5 26 12 PM" src="https://user-images.githubusercontent.com/55755297/75724011-6f9dd880-5cab-11ea-9c01-494ae5a38001.png">
+
+### Small Wins! 
+
+While working on the directions, we noticed that everytime an anotation was selected or directions requested the "overlays"  would lay over eachother. (no pun intended). This bug would cause small errors and crashes. in order to solve that problem we used the code below which would refresh the map each time. 
