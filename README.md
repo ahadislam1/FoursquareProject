@@ -1,10 +1,10 @@
 # FoursquareProject
 
-Foursquare app that allows you to check venues.
+Foursquare app that allows you to check venues near you and from afar.
 
 ## Description
 
-App allows the user to browse venues located worldwide via the Foursquare API. The user has the ability to search through the map through the search view controller. The search vc contains a collection view as well as a tableview that displays an alternate view of the results from the search vc.  The collection view and the table view segues to a more descriptive view controller that contains more information about the specified venue.  It also allows the user to see the directions based on the user's current location and the venue's location.
+This app allows the usesr to browse venues located worldwide via the Foursquare API. Users have the ability to search a global map through the search view controller. The search vc contains a collection view as well as a tableview that displays an alternate view of the results from the search vc.  The collection and table views segue to a more descriptive view controller that contains more information about the selected venue.  It also allows users to see directions to the venue based on their current location and the venue's location.
 
 Users can save venues to user-specified collections.  They can create new collections or add to existing ones.  Users can delete selected venues from collections as well.
 
@@ -27,11 +27,13 @@ While working on the directions, we noticed that everytime an anotation was sele
 
 ## Gifs 
 
-![detailView](https://user-images.githubusercontent.com/55755297/75726533-990d3300-5cb0-11ea-85cf-8b4ccf80389b.gif)
+![firstView](https://user-images.githubusercontent.com/55755297/75789298-7a05b400-5d37-11ea-82e9-7d112376e9e7.gif)
 
-![saveFromDetail](https://user-images.githubusercontent.com/55755297/75726503-8abf1700-5cb0-11ea-803c-58ef076561b8.gif)
+![detailView](https://user-images.githubusercontent.com/55755297/75789314-80942b80-5d37-11ea-87ab-2ed02f17b55f.gif)
 
-![finalView](https://user-images.githubusercontent.com/55755297/75726478-7ed35500-5cb0-11ea-89c1-f59a106be665.gif)
+![saveFromDetail](https://user-images.githubusercontent.com/55755297/75789322-82f68580-5d37-11ea-8333-7bb27d604c30.gif)
+
+![finalView](https://user-images.githubusercontent.com/55755297/75789325-84c04900-5d37-11ea-98b0-cf34ec79cb4a.gif)
 
 ## Collaboraters
 
